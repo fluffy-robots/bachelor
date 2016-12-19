@@ -9294,6 +9294,10 @@ html {
   overflow: hidden;
 }
 
+body {
+  font: Open Sans;
+}
+
 .container.is-fluid {
   margin: 0;
 }
@@ -9423,6 +9427,8 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 
 .sidebar p, .sidebar a {
   color: white;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .list-image {
