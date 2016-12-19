@@ -6,4 +6,43 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Bulma CSS
+@import "node_modules/bulma/bulma";
+// Font Awesome
+@import "node_modules/font-awesome/scss/font-awesome";
+// Animate.css
+// @import "node_modules/animate.css";
+
+html{
+	overflow: hidden;
+}
+body{
+    font: Open Sans;
+}
+.container.is-fluid {
+    margin: 0;
+}
+.main-content {
+    overflow: auto;
+    height: calc( 100vh - 112px);
+    padding: 15px;
+}
+.logo strong {
+    color: $primary;
+}
+.logo{
+    height: 60px;
+    background: white;
+    font-size: 40px;
+    font: open sans-serif;
+    text-align: center;
+    font-weight: 200;
+}
+
+// Vue Components
+@import "./components/SearchBar";
+@import "./components/NavTop";
+@import "./components/NavLeft";
+@import "./components/ManufacturerProducts";

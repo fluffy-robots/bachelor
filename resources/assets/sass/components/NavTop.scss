@@ -1,0 +1,34 @@
+.nav-top {
+    display: flex;
+    height: 61px;
+    background: white;
+    border-bottom: 1px solid #cacaca;
+    padding-right: 15px;
+}
+.nav-top--search{
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+.nav-top--buttons{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 5px;
+}
+.nav-top--buttons a{
+    padding: 15px;
+}
+.nav-top--buttons a:hover{
+    border-bottom: 1px solid #ef6b45;
+}
+.nav-top--separator{
+    border-left: 1px solid #dadada;
+    height: 40px;
+}
+.nav-top--logout {
+    display: inline-flex;
+    align-items: center;
+}

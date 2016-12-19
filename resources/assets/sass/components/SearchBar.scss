@@ -1,0 +1,38 @@
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+.close {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+input.search-bar {
+    border: none;
+    padding: 1px 15px;
+    font-size: 15px;
+    outline: none;
+    flex: 1;
+    margin-top: 1px;
+}
+input.search-bar:hover, input.search-bar:focus, input.search-bar-border{
+    border: 1px solid $primary;
+    padding: 1px 14px;
+    margin-top: 0px;
+    margin-bottom: -1px;
+    border-radius: 2px;
+}
+.search-modal {
+    position: absolute;
+    max-height: 70vh;
+    background: white;
+    border: 1px solid $primary;
+    border-top: 1px solid #e0e0e0;
+    z-index: 100;
+    padding: 15px;
+    margin-top: 60px;
+    left: 44px;
+    width: calc(100% - 44px);
+}
