@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-Manufacturer Media
+<media-bank></media-bank>
 @endsection

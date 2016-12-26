@@ -1,0 +1,55 @@
+.media--page-padding {
+	padding-left:20px;
+	padding-right: 20px;
+}
+
+.media--text-align {
+	text-align: center;
+}
+
+.media--map-box {
+	width: 100%;
+	height: 50px;
+	background: #fff;
+	border: 1px solid #ededed;
+
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+    -webkit-box-sizing: border-box;
+
+	span {
+		float: left;
+		margin: 9px 10px 0px 7px;
+		color: $primary;
+	}
+
+	h5 {
+		float: left;
+		margin: 14px 0px 0px 11px;
+	}
+}
+
+
+.media--file-image {
+	border: 1px solid $text-color;
+}
+
+.media--file-image-text {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.media--active {
+
+	.media--file-image {
+		border: 2px solid $primary;
+	}
+
+	.media--file-image-text {
+		background: $primary;
+
+		h5 {
+			color: #fff;
+		}
+	}
+}

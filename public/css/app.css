@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
 /*! bulma.io v0.2.3 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -9321,6 +9322,29 @@ body {
   font-weight: 200;
 }
 
+h1 {
+  color: grey;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 30px 30px 30px 30px;
+}
+
+h2 {
+  color: grey;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  margin: 30px 30px 30px 30px;
+}
+
+h5 {
+  color: grey;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
 .fade-enter-active, .fade-leave-active {
   -webkit-transition: opacity .5s;
   transition: opacity .5s;
@@ -9449,6 +9473,84 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
+}
+
+.media--page-padding {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.media--text-align {
+  text-align: center;
+}
+
+.media--map-box {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #ededed;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-sizing: border-box;
+}
+
+.media--map-box span {
+  float: left;
+  margin: 9px 10px 0px 7px;
+  color: #ef6b45;
+}
+
+.media--map-box h5 {
+  float: left;
+  margin: 14px 0px 0px 11px;
+}
+
+.media--file-image {
+  border: 1px solid grey;
+}
+
+.media--file-image-text {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.media--active .media--file-image {
+  border: 2px solid #ef6b45;
+}
+
+.media--active .media--file-image-text {
+  background: #ef6b45;
+}
+
+.media--active .media--file-image-text h5 {
+  color: #fff;
+}
+
+.rightclickmenu {
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ededed;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-sizing: border-box;
+}
+
+.rightclickmenu ul li:first-child {
+  border-top: 0px solid black;
+}
+
+.rightclickmenu ul li {
+  border-top: 0px solid #b6b5b5;
+  padding: 10px 0px 10px 20px;
+  line-height: 24px;
+}
+
+.rightclickmenu ul li span {
+  margin-right: 10px;
+}
+
+.rightclickmenu ul li:hover {
+  background: #ededed;
+  border-left: 4px solid #ef6b45;
+  padding-left: 16px;
 }
 
 /*# sourceMappingURL=app.css.map */

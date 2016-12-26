@@ -1,6 +1,7 @@
 
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
 
 // Variables
 @import "variables";
@@ -41,8 +42,37 @@ body{
     font-weight: 200;
 }
 
+
+//Headers
+
+h1 {
+    color: $text-color;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 30px 30px 30px 30px;
+
+}
+
+h2 {
+    color: $text-color;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 30px 30px 30px 30px;
+
+}
+
+h5 {
+    color: $text-color;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
 // Vue Components
 @import "./components/SearchBar";
 @import "./components/NavTop";
 @import "./components/NavLeft";
 @import "./components/ManufacturerProducts";
+@import "./components/mediabank";
+@import "./components/RightClickMenu";
