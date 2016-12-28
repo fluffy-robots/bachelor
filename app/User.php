@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Tag;
+use App\Product;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,6 +29,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function tags(){
+        return $this->hasMany(Tag::class);
+    }
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
+    public function add_product($product){
+        return $this->products()->save($product);
+    }
+    public function add_tag($product){
+        return $this->tags()->save($product);
+    }
 
     public function is_shopkeeper(){
         return ($this->role == 'shopkeeper' || $this->is_admin());

@@ -43,7 +43,6 @@
 		    Fourth column
 		  </div>
 		</div>
-    </div>
 </template>
 
 <script>

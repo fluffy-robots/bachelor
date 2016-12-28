@@ -58,9 +58,9 @@
     			
        		};
     	},
-        mounted() {
+        beforeMount() {
         	this.products.forEach(function(product){
-        		product.expanded = false;
+        		product.expanded = true;
         	});
         	console.log(this.products[0].expanded);            
         }
