@@ -26,14 +26,14 @@ class FileSeed extends Seeder
 	    	]);
 	        $image->save();
 
-	        $file = New File([
-	        	'name' => 'Test Fil',
+	        $pdf = New File([
+	        	'name' => 'Test PDF',
 	        	'path' => '/images/0/test.png',
 	        	'type' => 'pdf',
 	        	'user_id' => $user->id,
 	        	'parent_id' => NULL
 	    	]);
-	        $file->save();
+	        $pdf->save();
 
 	        $folder = New File([
 	        	'name' => 'Test Folder',
@@ -43,6 +43,24 @@ class FileSeed extends Seeder
 	        	'parent_id' => NULL
 	    	]);
 	        $folder->save();
+
+	        $excel = New File([
+	        	'name' => 'Test Excel',
+	        	'path' => '/images/0/test.png',
+	        	'type' => 'excel',
+	        	'user_id' => $user->id,
+	        	'parent_id' => NULL
+	    	]);
+	        $excel->save();
+
+	        $file = New File([
+	        	'name' => 'Test Folder',
+	        	'path' => '/images/0/test.png',
+	        	'type' => 'file',
+	        	'user_id' => $user->id,
+	        	'parent_id' => NULL
+	    	]);
+	        $file->save();
     	}
     }
 }

@@ -1,5 +1,8 @@
 <template>
 	<div class="manufacturer-products--container">
+        <nav class="nav has-shadow page-control">
+            <a class="button is-medium is-primary" v-if="">GEM</a>
+        </nav>
 		<div class="manufacturer-products--header">
 			<a>Name</a>
 			<a>Tags</a>

@@ -16,6 +16,8 @@
 // Animate.css
 // @import "node_modules/animate.css";
 
+@import "node_modules/toastr/toastr";
+
 html{
 	overflow: hidden;
 }
@@ -27,8 +29,9 @@ body{
 }
 .main-content {
     overflow: auto;
-    height: calc( 100vh - 112px);
-    padding: 15px;
+    overflow-x: hidden;
+    height: calc( 100vh - 60px);    
+    padding-top: 60px;
 }
 .logo strong {
     color: $primary;
@@ -80,3 +83,4 @@ h5 {
 @import "./components/mediabank";
 @import "./components/RightClickMenu";
 @import "./components/shopkeepers";
+@import "./components/PageControl";
