@@ -5,6 +5,11 @@
 .shopkeeper--logo {
 	width: 120px;
 	margin:20px;
+	margin-left: 50px;
+}
+
+.shopkeeper--logo-pending {
+	width: 120px;
 }
 
 .shopkeeper--info {
@@ -27,5 +32,25 @@
 }
 
 .shopkeeeper--message {
-	margin-bottom: 50px!important;
+
+}
+
+.shopkeeper--align {
+	text-align: center;
+}
+
+.shopkeeper--info-big {
+	font-size: 20px;
+}
+
+.shopkeeper--bottons {
+	text-align: right;
+	margin-top: 20px;
+	padding-right: 60px;
+
+}
+
+.shopkeeper--border {
+	border-bottom: 1px solid $light-grey;
+	padding-top: 15px;
 }
