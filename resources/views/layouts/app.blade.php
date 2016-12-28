@@ -35,13 +35,7 @@
 	        	</div>
 	        	<div class="column">
 		        	<nav-top></nav-top>
-<<<<<<< HEAD
-		        	<!-- <page-control state="{{ Route::getCurrentRoute()->getPath() }}"></page-control> -->
-		        	<div class="main-content">
-=======
-		        	<page-control state="{{ Route::getCurrentRoute()->getPath() }}"></page-control>
 		        	<div class="main-content animated fadeIn">
->>>>>>> 17a2d5c344317f157421831a06963b94fb31e5af
 		        		@yield('content')
 		        	</div>
 	        	</div>
