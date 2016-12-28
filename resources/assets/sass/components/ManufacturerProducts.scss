@@ -11,5 +11,27 @@
 
 .manufacturer-products--list{
 	display: flex;
-    justify-content: space-between;
+}
+
+.manufacturer-products--list {
+	border-bottom: 1px solid black;
+	background: #fff;
+	padding: 5px;
+	line-height: 50px;
+
+
+
+
+	img {
+		width: 60px;
+		height: 60px;
+	}
+
+	ul {
+		white-space:nowrap;
+
+		li {
+			display: inline;
+		}
+	}
 }

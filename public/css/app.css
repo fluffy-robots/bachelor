@@ -9476,8 +9476,26 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 .manufacturer-products--list {
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
+}
+
+.manufacturer-products--list {
+  border-bottom: 1px solid black;
+  background: #fff;
+  padding: 5px;
+  line-height: 50px;
+}
+
+.manufacturer-products--list img {
+  width: 60px;
+  height: 60px;
+}
+
+.manufacturer-products--list ul {
+  white-space: nowrap;
+}
+
+.manufacturer-products--list ul li {
+  display: inline;
 }
 
 .media--page-padding {
@@ -9605,6 +9623,14 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 .shopkeeper--border {
   border-bottom: 1px solid #b6b5b5;
   padding-top: 15px;
+}
+
+.manufac--side-bar {
+  background: #fff;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 115px;
 }
 
 /*# sourceMappingURL=app.css.map */
