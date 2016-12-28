@@ -1,6 +1,6 @@
 <template>
 <div class="shopkeeper--background">
-    <nav class="nav has-shadow page-control">
+    <nav class="nav has-shadow page-control animated fadeIn">
         <a class="button is-medium is-primary" v-if="">GEM</a>
     </nav>
 	<article class="message is-warning shopkeeeper--message">

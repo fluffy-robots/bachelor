@@ -1,6 +1,6 @@
 <template>
-	<nav class="nav has-shadow page-control">
-	    <a class="button is-medium is-primary" v-if="">GEM</a>
+    <nav class="nav has-shadow page-control animated fadeIn">
+        <a class="button is-medium is-primary">GEM</a>
 	    <span class="nav-item">
             <a v-for="breadcrumb in breadcrumbs">{{breadcrumb}}</a>
         </span>

@@ -12,6 +12,7 @@
 
     <title>{{ config('app.name', 'Shop-Import') }}</title>
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
@@ -34,8 +35,13 @@
 	        	</div>
 	        	<div class="column">
 		        	<nav-top></nav-top>
+<<<<<<< HEAD
 		        	<!-- <page-control state="{{ Route::getCurrentRoute()->getPath() }}"></page-control> -->
 		        	<div class="main-content">
+=======
+		        	<page-control state="{{ Route::getCurrentRoute()->getPath() }}"></page-control>
+		        	<div class="main-content animated fadeIn">
+>>>>>>> 17a2d5c344317f157421831a06963b94fb31e5af
 		        		@yield('content')
 		        	</div>
 	        	</div>
@@ -45,5 +51,6 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
 </body>
 </html>

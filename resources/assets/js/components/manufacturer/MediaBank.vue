@@ -1,6 +1,6 @@
 <template>
     <div @click="hideContextMenu">
-        <nav class="nav has-shadow page-control">
+        <nav class="nav has-shadow page-control animated fadeIn">
             <button class="button is-medium is-primary" @click="showUploadDropdown = !showUploadDropdown">Ny</button>
             <transition name="fade">
                 <div class="upload-dropdown" v-show="showUploadDropdown">

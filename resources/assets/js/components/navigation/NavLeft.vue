@@ -3,7 +3,7 @@
         <p class="menu-label" v-if="isAdmin">
             Manufacturer
         </p>
-        <ul class="menu-list" v-if="isManufacturer">
+        <ul class="menu-list animated fadeIn" v-if="isManufacturer">
             <li v-for="menuItem in manufacturerMenuItems">
                 <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route"> 
                     <span class="icon">
@@ -16,7 +16,7 @@
         <p class="menu-label" v-if="isAdmin">
             Shopkeeper
         </p>
-        <ul class="menu-list" v-if="isShopkeeper">
+        <ul class="menu-list animated fadeIn" v-if="isShopkeeper">
             <li v-for="menuItem in shopkeeperMenuItems">
                 <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route">
                     <span class="icon">

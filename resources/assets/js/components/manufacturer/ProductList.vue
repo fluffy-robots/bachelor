@@ -1,6 +1,6 @@
 <template>
 	<div class="manufacturer-products--container">
-        <nav class="nav has-shadow page-control">
+        <nav class="nav has-shadow page-control animated fadeIn">
             <a class="button is-medium is-primary" v-if="">GEM</a>
         </nav>
 		<div class="manufacturer-products--header">
@@ -12,44 +12,50 @@
 			v-for="product in products"
 		>
 			<div class="manufacturer-products--list" v-show="!isSelected(product)">
-				<p>{{ product.name }}</p>
+			<img class="list-image" :src="product.image" alt="Product Image" >
+				<p class="product--title">{{ product.name }}</p>
 				<ul>
+					<li>Tags:</li>
 					<li v-for="tag in product.tags" class="list-tags">{{tag.name}}</li>
 				</ul>
-				<p>{{ product.updated_at }}</p>
+				<p class="product--updatet">{{ product.updated_at }}</p>
+				<a class="button is-primary produkt--knppen">Rediger produkt</a>
                 <span class="icon" @click="select(product)">
                   <i class="fa" :class="{'fa-plus' : !isSelected(product)}"></i>
                 </span>
 			</div>
 			<div class="manufacturer-product--expanded" v-show="isSelected(product)">
-				<img class="list-image" :src="product.image" alt="Product Image" >
-				<span class="list-info">
-					<span class="list-header">
-						<p class="list-name">{{ product.name }} fgearge</p>
-					</span>
-					<span class="list-content">
-						<span class="columns">
-							<span class="column">
-								<p class="list-ean">{{ product.ean }} feageargrae</p>
-								<p class="list-tags">
-									<ul>
-										<li
-											v-for="tag in product.tags"
-										>
-											{{tag.name}} ssss
-										</li>
-									</ul>
-								</p>
-							</span>
-							<span class="column">
-								<p class="list-description">{{ product.description }}</p>
-							</span>
-						</span>
-					</span>
-					<span class="icon" @click="select(product)">
-	                  <i class="fa" :class="{'fa-minus' : isSelected(product)}"></i>
-	                </span>
-				</span>
+				<div class="columns">
+					<div class="column is-2">
+						<img class="list-image" :src="product.image" alt="Product Image" >
+					</div>
+					<div class="column is-10">
+						<div class="columns product--e-header">
+							<div class="column is-one-quarter">
+							    <h5><strong>{{ product.name }}</strong></h5>
+							  </div>
+							  <div class="column">
+							    <span class="icon product--e-icon" @click="select(product)" style="float:right;">
+				                  <i class="fa" :class="{'fa-minus' : isSelected(product)}"></i>
+				                </span>
+				                <p class="product--e-upldated">{{ product.updated_at }}</p>
+							</div>		
+						</div>
+						<div class="columns">
+							<div class="column is-one-quarter">
+							    <p><strong>EAN:</strong> {{ product.ean }}</p>
+							  </div>
+							  <div class="column">
+							  <p><strong>Beskrivelse:</strong></p>
+							    <p>{{ product.description }}</p>
+							</div>
+							<div class="column is-one-quarter">
+							    <p><a class="button is-primary">Primary</a></p>
+							    <p><a class="button is-info">Info</a></p>
+							  </div>		
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

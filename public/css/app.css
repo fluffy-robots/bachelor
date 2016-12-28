@@ -9519,6 +9519,7 @@ html {
 
 body {
   font: Open Sans;
+  background: #fff;
 }
 
 .container.is-fluid {
@@ -9530,6 +9531,7 @@ body {
   overflow-x: hidden;
   height: calc( 100vh - 60px);
   padding-top: 60px;
+  background: #f5f5f5;
 }
 
 .logo strong {
@@ -9699,8 +9701,81 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 .manufacturer-products--list {
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
+}
+
+.manufacturer-products--list {
+  border-bottom: 1px solid #b6b5b5;
+  background: #fff;
+  padding: 5px;
+  line-height: 70px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.manufacturer-products--list img {
+  width: 60px;
+  height: 60px;
+  margin-right: 26px;
+}
+
+.manufacturer-products--list ul {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.manufacturer-products--list ul :first-child {
+  color: #ef6b45;
+  margin-right: 10px;
+}
+
+.manufacturer-products--list ul li {
+  display: inline;
+  margin-right: 5px;
+}
+
+.manufacturer-products--list span {
+  line-height: 70px;
+  color: #ef6b45;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.product--title {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.product--updatet {
+  float: right;
+  width: 300px;
+}
+
+.produkt--knppen {
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.manufacturer-product--expanded {
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  border-bottom: 2px solid #ef6b45;
+}
+
+.product--e-header {
+  border-bottom: 1px solid #b6b5b5;
+  padding-top: 20px;
+}
+
+.product--e-upldated {
+  float: right;
+  margin-right: 50px;
+}
+
+.product--e-icon {
+  margin-right: 30px;
+  color: #ef6b45;
 }
 
 .media--hover:hover {
@@ -9885,6 +9960,49 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 
 .upload-dropdown input {
   width: 300px;
+}
+
+.manufac--side-bar {
+  background: #fff;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 115px;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fadeInLeft {
+  -webkit-animation-duration: 0.1s;
+  animation-duration: 0.1s;
+}
+
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #ff8040;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
 }
 
 /*# sourceMappingURL=app.css.map */
