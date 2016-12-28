@@ -10,16 +10,16 @@
   <table class="table">
   <tbody>
     <tr>
-      <td>Coolshop</td>
-      <td>tlf: 29 87 37 23</td>
-      <td class="is-icon">
+      <td><img class="shopkeeper--logo-pending" src="https://static.coolshop.com/apocalypse/images/logo/coolshop@2x.png" alt=""></td>
+      <td style="padding-top: 20px;">tlf: 29 87 37 23</td>
+      <td style="padding-top: 20px;" class="is-icon">
         <a href="#">
-          <i class="fa fa-check-circle-o"></i>
+          <i class="fa fa-check-circle-o"></i> Godkend
         </a>
       </td>
-      <td class="is-icon">
+      <td style="padding-top: 20px;" class="is-icon">
         <a href="#">
-          <i class="fa fa-times-circle-o"></i>
+          <i class="fa fa-times-circle-o"></i> Afvis
         </a>
       </td>
     </tr>
@@ -27,8 +27,8 @@
 </table>
   </div>
 </article>
-		<div class="columns">
-		  <div class="column is-1">
+		<div class="columns shopkeeper--border">
+		  <div class="column is-2">
 		    <img class="shopkeeper--logo" src="http://www.bodyman.dk/imgs/bodymandk-logo.png?1fd2123" alt="">
 		  </div>
 		  <div class="column is-2 shopkeeper--info">
@@ -36,11 +36,62 @@
 		    <p>Hobrovej 23</p>
 		    <p>9000 Aalborg</p>
 		  </div>
-		  <div class="column">
-		    Third column
+		  <div class="column is-1 shopkeeper--info shopkeeper--align" style="margin-top: 7px;">
+		    <p class="shopkeeper--info-big">22</p>
+		    <p>Produkter</p>
 		  </div>
-		  <div class="column">
-		    Fourth column
+		  <div class="column is-3 shopkeeper--align" style="margin-top: 20px;">
+		   <p>tlf: 22 34 23 45</p>
+		   <p>Mail: main@bodyman.dk</p>
+		  </div>
+		  <div class="column is-4 shopkeeper--bottons">
+		  	<a class="button is-info">Adganskontrol</a>
+		  	<a class="button is-danger">Fjern</a>
+		  </div>
+		</div>
+
+		<div class="columns shopkeeper--border">
+		  <div class="column is-2">
+		    <img class="shopkeeper--logo" src="http://www.bodyman.dk/imgs/bodymandk-logo.png?1fd2123" alt="">
+		  </div>
+		  <div class="column is-2 shopkeeper--info">
+		    <p>Bodymand.dk<p>
+		    <p>Hobrovej 23</p>
+		    <p>9000 Aalborg</p>
+		  </div>
+		  <div class="column is-1 shopkeeper--info shopkeeper--align" style="margin-top: 7px;">
+		    <p class="shopkeeper--info-big">22</p>
+		    <p>Produkter</p>
+		  </div>
+		  <div class="column is-3 shopkeeper--align" style="margin-top: 20px;">
+		   <p>tlf: 22 34 23 45</p>
+		   <p>Mail: main@bodyman.dk</p>
+		  </div>
+		  <div class="column is-4 shopkeeper--bottons">
+		  	<a class="button is-info">Adganskontrol</a>
+		  	<a class="button is-danger">Fjern</a>
+		  </div>
+		</div>
+		<div class="columns shopkeeper--border">
+		  <div class="column is-2">
+		    <img class="shopkeeper--logo" src="http://www.bodyman.dk/imgs/bodymandk-logo.png?1fd2123" alt="">
+		  </div>
+		  <div class="column is-2 shopkeeper--info">
+		    <p>Bodymand.dk<p>
+		    <p>Hobrovej 23</p>
+		    <p>9000 Aalborg</p>
+		  </div>
+		  <div class="column is-1 shopkeeper--info shopkeeper--align" style="margin-top: 7px;">
+		    <p class="shopkeeper--info-big">22</p>
+		    <p>Produkter</p>
+		  </div>
+		  <div class="column is-3 shopkeeper--align" style="margin-top: 20px;">
+		   <p>tlf: 22 34 23 45</p>
+		   <p>Mail: main@bodyman.dk</p>
+		  </div>
+		  <div class="column is-4 shopkeeper--bottons">
+		  	<a class="button is-info">Adganskontrol</a>
+		  	<a class="button is-danger">Fjern</a>
 		  </div>
 		</div>
 </template>
