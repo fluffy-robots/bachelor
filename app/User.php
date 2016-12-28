@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Tag;
+use App\File;
 use App\Product;
 
 use Illuminate\Notifications\Notifiable;
@@ -43,6 +44,13 @@ class User extends Authenticatable
     }
     public function add_tag($product){
         return $this->tags()->save($product);
+    }
+
+    public function files(){
+        return $this->hasMany(File::class);
+    }
+    public function add_file($file){
+        return $this->files()->save($file);
     }
 
     public function is_shopkeeper(){

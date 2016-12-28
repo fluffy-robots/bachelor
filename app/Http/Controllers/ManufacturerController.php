@@ -18,7 +18,8 @@ class ManufacturerController extends Controller
 
     public function media()
     {
-        return view('manufacturer.media');
+        $files = Auth::user()->files;
+        return view('manufacturer.media', compact('files'));
     }
 
     public function shopkeeper()

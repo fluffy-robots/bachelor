@@ -1,3 +1,7 @@
+.media--hover:hover{
+	cursor: pointer;
+}
+
 .media--page-padding {
 	padding-left:20px;
 	padding-right: 20px;
@@ -5,6 +9,10 @@
 
 .media--text-align {
 	text-align: center;
+}
+
+.media--file-icon{
+	color: $primary;
 }
 
 .media--map-box {
@@ -32,6 +40,9 @@
 
 .media--file-image {
 	border: 1px solid $text-color;
+	min-height: 200px;
+    max-height: 200px;
+	overflow: hidden;
 }
 
 .media--file-image-text {
@@ -40,7 +51,11 @@
 }
 
 .media--active {
+    border-color: $primary;
 
+	.media--file-icon{
+		color: white;
+	}
 	.media--file-image {
 		border: 2px solid $primary;
 	}

@@ -22,6 +22,11 @@ Route::group(['middleware'=> 'auth', 'prefix' => 'v1'], function(){
 	Route::post('products', 'ProductController@store');
 	Route::patch('products/{product}', 'ProductController@update');
 	Route::delete('products/{product}', 'ProductController@destroy');
+
+	Route::get('files', 'FileController@index');
+	Route::post('files', 'FileController@store');
+	Route::patch('files/{file}', 'FileController@update');
+	Route::delete('files/{file}', 'FileController@destroy');
 });
 
 // GET|HEAD  api/v1/products                
