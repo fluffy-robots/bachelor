@@ -8,14 +8,17 @@
 		<div class="manufacturer-products--list-container"
 			v-for="product in products"
 		>
-			<div class="manufacturer-products--list">
+			<div class="manufacturer-products--list" v-show="!isSelected(product)">
 				<p>{{ product.name }}</p>
 				<ul>
 					<li v-for="tag in product.tags" class="list-tags">{{tag.name}}</li>
 				</ul>
 				<p>{{ product.updated_at }}</p>
+                <span class="icon" @click="select(product)">
+                  <i class="fa" :class="{'fa-plus' : !isSelected(product)}"></i>
+                </span>
 			</div>
-			<div class="manufacturer-product--expanded" v-show="product.expanded">
+			<div class="manufacturer-product--expanded" v-show="isSelected(product)">
 				<img class="list-image" :src="product.image" alt="Product Image" >
 				<span class="list-info">
 					<span class="list-header">
@@ -40,6 +43,9 @@
 							</span>
 						</span>
 					</span>
+					<span class="icon" @click="select(product)">
+	                  <i class="fa" :class="{'fa-minus' : isSelected(product)}"></i>
+	                </span>
 				</span>
 			</div>
 		</div>
@@ -51,18 +57,25 @@
     	props: {
     		products: {
     			type: Array
-    		}
+    		},
     	},
     	data(){
     		return {
-    			
+    			expanded_products: []
        		};
     	},
-        beforeMount() {
-        	this.products.forEach(function(product){
-        		product.expanded = true;
-        	});
-        	console.log(this.products[0].expanded);            
-        }
+    	methods: {
+    		select(product){
+                if(this.isSelected(product))
+                {
+                    this.expanded_products = this.expanded_products.filter((expanded_product) => expanded_product.id != product.id)
+                }else{
+                    this.expanded_products.push(product);
+                }
+            },
+            isSelected(product){
+                return !! this.expanded_products.find((expanded_product) => expanded_product.id == product.id);
+            }
+    	}
     }
 </script>

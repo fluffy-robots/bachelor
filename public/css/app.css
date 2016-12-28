@@ -9480,6 +9480,10 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
   justify-content: space-between;
 }
 
+.media--hover:hover {
+  cursor: pointer;
+}
+
 .media--page-padding {
   padding-left: 20px;
   padding-right: 20px;
@@ -9487,6 +9491,10 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 
 .media--text-align {
   text-align: center;
+}
+
+.media--file-icon {
+  color: #ef6b45;
 }
 
 .media--map-box {
@@ -9511,11 +9519,22 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 
 .media--file-image {
   border: 1px solid grey;
+  min-height: 200px;
+  max-height: 200px;
+  overflow: hidden;
 }
 
 .media--file-image-text {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.media--active {
+  border-color: #ef6b45;
+}
+
+.media--active .media--file-icon {
+  color: white;
 }
 
 .media--active .media--file-image {

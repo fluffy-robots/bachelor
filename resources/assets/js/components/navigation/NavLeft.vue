@@ -5,9 +5,12 @@
         </p>
         <ul class="menu-list" v-if="isManufacturer">
             <li v-for="menuItem in manufacturerMenuItems">
-                <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route"> <span class="icon">
-  <i class="fa fa-home"></i>
-</span>{{ menuItem.name }}</a>
+                <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route"> 
+                    <span class="icon">
+                        <i class="fa" :class="menuItem.icon"></i>
+                    </span>
+                    {{ menuItem.name }}
+                </a>
             </li>
         </ul>
         <p class="menu-label" v-if="isAdmin">
@@ -15,7 +18,12 @@
         </p>
         <ul class="menu-list" v-if="isShopkeeper">
             <li v-for="menuItem in shopkeeperMenuItems">
-                <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route">{{ menuItem.name }}</a>
+                <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route">
+                    <span class="icon">
+                        <i class="fa" :class="menuItem.icon"></i>
+                    </span>
+                    {{ menuItem.name }}
+                </a>
             </li>
         </ul>
     </aside>
@@ -25,15 +33,15 @@
         data() {
             return {
                 shopkeeperMenuItems: [
-                    { name: 'Dashboard', route: '/home'},
-                    { name: 'Products', route: '/shopkeeper/products'},
-                    { name: 'Manufacturer', route: '/shopkeeper/manufacturer'},
+                    { name: 'Dashboard', route: '/home', icon: 'fa-user'},
+                    { name: 'Products', route: '/shopkeeper/products', icon: 'fa-cog'},
+                    { name: 'Manufacturer', route: '/shopkeeper/manufacturer', icon: 'fa-adjust'},
                 ],
                 manufacturerMenuItems: [
-                    { name: 'Dashboard', route: '/home'},
-                    { name: 'Products', route: '/manufacturer/products'},
-                    { name: 'Media', route: '/manufacturer/media'},
-                    { name: 'Shopkeeper', route: '/manufacturer/shopkeeper'}
+                    { name: 'Dashboard', route: '/home', icon: 'fa-user'},
+                    { name: 'Products', route: '/manufacturer/products', icon: 'fa-cog'},
+                    { name: 'Media', route: '/manufacturer/media', icon: 'fa-home'},
+                    { name: 'Shopkeeper', route: '/manufacturer/shopkeeper', icon: 'fa-home'}
                 ]
             }
         },
