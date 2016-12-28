@@ -9452,7 +9452,12 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 .sidebar p, .sidebar a {
   color: white;
   font-size: 16px;
-  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 25px;
+}
+
+.sidebar p span, .sidebar a span {
+  margin-right: 10px;
 }
 
 .list-image {
@@ -9551,6 +9556,35 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
   background: #ededed;
   border-left: 4px solid #ef6b45;
   padding-left: 16px;
+}
+
+.shopkeeper--background {
+  background: #fff;
+}
+
+.shopkeeper--logo {
+  width: 120px;
+  margin: 20px;
+}
+
+.shopkeeper--info {
+  padding-left: 50px;
+  padding-top: 17px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.shopkeeper--info :first-child {
+  font-weight: bold;
+}
+
+.shopkeeper--message-header {
+  line-height: 22px;
+  color: #fff !important;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.4);
+}
+
+.shopkeeeper--message {
+  margin-bottom: 50px !important;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -5,7 +5,9 @@
         </p>
         <ul class="menu-list" v-if="isManufacturer">
             <li v-for="menuItem in manufacturerMenuItems">
-                <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route">{{ menuItem.name }}</a>
+                <a :class="{ 'is-active' : isActive(menuItem.route) }" :href="menuItem.route"> <span class="icon">
+  <i class="fa fa-home"></i>
+</span>{{ menuItem.name }}</a>
             </li>
         </ul>
         <p class="menu-label" v-if="isAdmin">

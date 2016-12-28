@@ -19,18 +19,18 @@
 				<img class="list-image" :src="product.image" alt="Product Image" >
 				<span class="list-info">
 					<span class="list-header">
-						<p class="list-name">{{ product.name }}</p>
+						<p class="list-name">{{ product.name }} fgearge</p>
 					</span>
 					<span class="list-content">
 						<span class="columns">
 							<span class="column">
-								<p class="list-ean">{{ product.ean }}</p>
+								<p class="list-ean">{{ product.ean }} feageargrae</p>
 								<p class="list-tags">
 									<ul>
 										<li
 											v-for="tag in product.tags"
 										>
-											{{tag.name}}
+											{{tag.name}} ssss
 										</li>
 									</ul>
 								</p>
