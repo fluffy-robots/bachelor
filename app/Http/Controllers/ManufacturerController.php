@@ -26,4 +26,11 @@ class ManufacturerController extends Controller
     {
         return view('manufacturer.shopkeeper');
     }
+
+    public function files(Request $request)
+    {
+        $parent_id = ($request->parent_id && $request->parent_id != null) ? $request->parent_id : null;
+        $files = Auth::user()->files->where('parent_id', $parent_id);
+        return $files;
+    }
 }

@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // })->middleware('auth:api');
 
-Route::group(['middleware'=> 'auth', 'prefix' => 'v1'], function(){
+Route::group(['middleware'=> 'auth:api', 'prefix' => 'v1'], function(){
 	Route::get('products', 'ProductController@index');
 	Route::post('products', 'ProductController@store');
 	Route::patch('products/{product}', 'ProductController@update');

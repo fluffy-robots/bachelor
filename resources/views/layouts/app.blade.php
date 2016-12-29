@@ -7,6 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- API Token -->
+    <meta name="api-token" content="{{ Auth::user()->api_token }}">
 
     <title>{{ config('app.name', 'Shop-Import') }}</title>
     <!-- Styles -->
@@ -17,6 +19,7 @@
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
+            'apiToken' => Auth::user()->api_token,
             'User' => Auth::user(),
             'route' => Route::getCurrentRoute()->getPath()
         ]); ?>
@@ -32,7 +35,6 @@
 	        	</div>
 	        	<div class="column">
 		        	<nav-top></nav-top>
-		        	<page-control state="{{ Route::getCurrentRoute()->getPath() }}"></page-control>
 		        	<div class="main-content animated fadeIn">
 		        		@yield('content')
 		        	</div>

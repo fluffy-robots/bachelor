@@ -1,7 +1,9 @@
 <template>
-	<nav class="nav has-shadow page-control animated fadeIn">
-	    <a class="button is-medium is-primary">GEM</a>
-	    <span class="nav-item">test > mere > test</span>
+    <nav class="nav has-shadow page-control animated fadeIn">
+        <a class="button is-medium is-primary">GEM</a>
+	    <span class="nav-item">
+            <a v-for="breadcrumb in breadcrumbs">{{breadcrumb}}</a>
+        </span>
 
 
 	</nav>
@@ -12,12 +14,23 @@
 		padding: 0 10px;
 	    display: flex;
 	    align-items: center;
+        position: fixed;
+        top: 61px;
+        width: calc( 100% - 16.6666666667%);
 	}
 </style>
 
 <script>
     export default {
     	props: ['state'],
+        data(){
+            return {
+                primaryButton: {
+                    show: false,
+                    text: 'Knap'
+                }
+            }
+        },
         computed: {
             isAdmin(){
                 return Helper.isAdmin();
@@ -27,7 +40,7 @@
             },
             isShopkeeper() {
                 return Helper.isShopkeeper();
-            },
+            }
         },
         methods: {
         	// Shopkeeper Methods
@@ -35,7 +48,9 @@
         	shopkeeperProductNew(){},
         	shopkeeperProductSelect(product){},
 
-        	shopkeeperMediaInit(){},
+        	shopkeeperMediaInit(data){
+                console.log(data);
+            },
         	shopkeeperMediaSelect(media){},
 
         	shopkeeperManufacturerInit(){},
@@ -53,23 +68,23 @@
         	let vm = this;
 
         	// Shopkeeper Events
-        	Event.$on('shopkeeper-products--init', vm.shopkeeperProductInit());
-        	Event.$on('shopkeeper-products--new', vm.shopkeeperProductNew());
-        	Event.$on('shopkeeper-products--select', vm.shopkeeperProductSelect());
+        	EventHub.$on('shopkeeper-products--init', (data) => { vm.shopkeeperProductInit(data) });
+        	EventHub.$on('shopkeeper-products--new', (data) => { vm.shopkeeperProductNew(data) });
+        	EventHub.$on('shopkeeper-products--select', (data) => { vm.shopkeeperProductSelect(data) });
 
-        	Event.$on('shopkeeper-media--init', vm.shopkeeperMediaInit());
-        	Event.$on('shopkeeper-media--select', vm.shopkeeperMediaSelect());
+        	EventHub.$on('shopkeeper-media--init', (data) => { vm.shopkeeperMediaInit(data) });
+        	EventHub.$on('shopkeeper-media--select', (data) => { vm.shopkeeperMediaSelect(data) });
 
-			Event.$on('shopkeeper-manufacturer--init', vm.shopkeeperManufacturerInit());
-        	Event.$on('shopkeeper-manufacturer--select', vm.shopkeeperManufacturerSelect());       	
+			EventHub.$on('shopkeeper-manufacturer--init', (data) => { vm.shopkeeperManufacturerInit(data) });
+        	EventHub.$on('shopkeeper-manufacturer--select', (data) => { vm.shopkeeperManufacturerSelect(data) });       	
 			
-			// Manufacturer Events
-        	Event.$on('manufacturer-products--init', vm.manufacturerProductInit());
-        	Event.$on('manufacturer-products--new', vm.manufacturerProductNew());
-        	Event.$on('manufacturer-products--select', vm.manufacturerProductSelect());
+			// Manufacturer EventHubs
+        	EventHub.$on('manufacturer-products--init', (data) => { vm.manufacturerProductInit(data) });
+        	EventHub.$on('manufacturer-products--new', (data) => { vm.manufacturerProductNew(data) });
+        	EventHub.$on('manufacturer-products--select', (data) => { vm.manufacturerProductSelect(data) });
 
-			Event.$on('manufacturer-shopkeeper--init', vm.manufacturerShopkeeperInit());
-        	Event.$on('manufacturer-shopkeeper--select', vm.manufacturerShopkeeperSelect());       
+			EventHub.$on('manufacturer-shopkeeper--init', (data) => { vm.manufacturerShopkeeperInit(data) });
+        	EventHub.$on('manufacturer-shopkeeper--select', (data) => { vm.manufacturerShopkeeperSelect(data) });       
         }
     }
 </script>

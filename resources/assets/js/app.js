@@ -34,7 +34,7 @@ Vue.component('manufacturers', require('./components/shopkeeper/Manufacturers.vu
 
 
 
-window.Event = new Vue();
+window.EventHub = new Vue();
 
 window.Helper = {
 	isAdmin() {

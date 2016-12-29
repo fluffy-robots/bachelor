@@ -18,7 +18,8 @@ class DevSeed extends Seeder
         	'name' => 'Martin',
         	'email' => 'admin@webkenth.dk',
         	'password' => Hash::make('password'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'api_token' => str_random(60)
     	]);
         $martin->save();
 
@@ -27,7 +28,8 @@ class DevSeed extends Seeder
         	'name' => 'Morten',
         	'email' => 'mooorten@gmail.com',
         	'password' => Hash::make('password'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'api_token' => str_random(60)
     	]);
         $morten->save();
 
@@ -36,7 +38,8 @@ class DevSeed extends Seeder
             'name' => 'Jonas',
             'email' => 'jb1497@gmail.com',
             'password' => Hash::make('password'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'api_token' => str_random(60)
         ]);
         $jonas->save();
 
@@ -44,7 +47,8 @@ class DevSeed extends Seeder
             'name' => 'Manufacturer',
             'email' => 'manu@manu.dk',
             'password' => Hash::make('password'),
-            'role' => 'manufacturer'
+            'role' => 'manufacturer',
+            'api_token' => str_random(60)
         ]);
         $manufacturer->save();
 
@@ -52,7 +56,8 @@ class DevSeed extends Seeder
             'name' => 'shopkeeper',
             'email' => 'shop@shop.dk',
             'password' => Hash::make('password'),
-            'role' => 'shopkeeper'
+            'role' => 'shopkeeper',
+            'api_token' => str_random(60)
         ]);
         $shopkeeper->save();
     }

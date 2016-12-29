@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class FileController extends Controller
 {
@@ -34,7 +35,7 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(Auth::guard('api')->user());
     }
 
     /**

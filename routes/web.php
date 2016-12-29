@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => ['manufacturer','auth'], 'prefix' => 'manufacturer'], function(){
 	Route::get('products', 'ManufacturerController@products');
 	Route::get('media', 'ManufacturerController@media');
+	Route::get('files', 'ManufacturerController@files');
 	Route::get('shopkeeper', 'ManufacturerController@shopkeeper');
 });
 Route::group(['middleware' => ['shopkeeper','auth'], 'prefix' => 'shopkeeper'], function(){

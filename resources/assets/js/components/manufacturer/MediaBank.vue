@@ -1,5 +1,23 @@
 <template>
-    <div>
+    <div @click="hideContextMenu">
+        <nav class="nav has-shadow page-control animated fadeIn">
+            <button class="button is-medium is-primary" @click="showUploadDropdown = !showUploadDropdown">Ny</button>
+            <transition name="fade">
+                <div class="upload-dropdown" v-show="showUploadDropdown">
+                    <input type="text" class="input" placeholder="Ny Mappe" v-model="newFolderName">
+                    <button class="button is-primary" @click.prevent="createNewFolder" :disabled="newFolderName.length == 0">Ny Mappe</button>
+                    <form 
+                        action="/file-upload"
+                        class="dropzone"
+                        id="my-awesome-dropzone"
+                    ></form>
+                </div>
+            </transition>
+            <span class="nav-item">
+                <a v-for="breadcrumb in breadcrumbs" @click="refreshMedia(breadcrumb.id)">{{breadcrumb.name}}</a>
+            </span>
+        </nav>
+
         <div class="columns">
         	<h2>Mapper</h2>
         </div>
@@ -8,6 +26,7 @@
                 class="column is-2 is-gapless media--hover"
                 v-for="folder in folders"
                 @click="select(folder)"
+                @contextmenu.prevent="activateContextMenu()"
             >
                 <div 
                     class="media--map-box"
@@ -31,6 +50,7 @@
                 v-for="file in files"
                 :class="{ 'media--active' : isSelected(file) }"
                 @click="select(file)"
+                @contextmenu.prevent="activateContextMenu()"
             >
         		<div class="media--file-image">
         			<img :src="file.image" alt="File Image">
@@ -46,11 +66,8 @@
         	</div>
         </div>
 
-
-
-        <!-- højreklik-menu -->
-
-        <div class="rightclickmenu">
+    <transition name="fade">
+        <div class="rightclickmenu" v-show="showContextMenu">
         	<ul>
         		<li>
         			<span class="icon">
@@ -95,6 +112,7 @@
         		</li>
         	</ul>
         </div>
+    </transition>   
 
     </div>
 </template>
@@ -102,13 +120,18 @@
 <script>
     export default {
         props: {
-            media: {
+            data: {
                 type: Array
             }
         },
         data() {
             return {
-                selected_media : []
+                media: this.data,
+                selected_media : [],
+                showContextMenu : false,
+                showUploadDropdown : false,
+                newFolderName: '',
+                parentId: 0
             }
         },
         methods: {
@@ -122,6 +145,31 @@
             },
             isSelected(media){
                 return !! this.selected_media.find((medie) => medie.id == media.id);
+            },
+            activateContextMenu(){
+                this.showContextMenu = true;
+                document.querySelector('.rightclickmenu').style.left = window.event.clientX + 'px';
+                document.querySelector('.rightclickmenu').style.top = window.event.clientY + 'px';
+            },
+            hideContextMenu(){
+                this.showContextMenu = false;
+            },
+            createNewFolder(){
+                this.$http.post('/api/v1/files', { name: this.newFolderName, parent_id: this.parentId, type: 'folder', api_token: Laravel.api_token }).then((response) => {
+                    Toastr.success('Mappen '+this.newFolderName+' Oprettet');
+                    this.showUploadDropdown = false;
+                    this.newFolderName = '';
+                }, (response) => {
+                    Toastr.error('Mappen blev ikke oprettet');
+                    this.showUploadDropdown = false;
+                });
+            },
+            refreshMedia(parentId = this.parentId){
+                console.log(parentId);
+                this.$http.get('/manufacturer/files?parent_id='+parentId).then((response) => {
+                    this.selected_media = [];
+                    // this.media = response.body;
+                });
             }
         },
         computed:{
@@ -152,10 +200,7 @@
                 return files;
             }
         },
-        created(){
-        },
         mounted() {
-            
         }
     }
 </script>
