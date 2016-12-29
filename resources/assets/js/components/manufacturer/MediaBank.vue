@@ -14,7 +14,7 @@
                 </div>
             </transition>
             <span class="nav-item">
-                <!-- <a v-for="breadcrumb in breadcrumbs">{{breadcrumb}}</a> -->
+                <a v-for="breadcrumb in breadcrumbs" @click="refreshMedia(breadcrumb.id)">{{breadcrumb.name}}</a>
             </span>
         </nav>
 
@@ -120,12 +120,13 @@
 <script>
     export default {
         props: {
-            media: {
+            data: {
                 type: Array
             }
         },
         data() {
             return {
+                media: this.data,
                 selected_media : [],
                 showContextMenu : false,
                 showUploadDropdown : false,
@@ -156,8 +157,18 @@
             createNewFolder(){
                 this.$http.post('/api/v1/files', { name: this.newFolderName, parent_id: this.parentId, type: 'folder', api_token: Laravel.api_token }).then((response) => {
                     Toastr.success('Mappen '+this.newFolderName+' Oprettet');
+                    this.showUploadDropdown = false;
+                    this.newFolderName = '';
                 }, (response) => {
                     Toastr.error('Mappen blev ikke oprettet');
+                    this.showUploadDropdown = false;
+                });
+            },
+            refreshMedia(parentId = this.parentId){
+                console.log(parentId);
+                this.$http.get('/manufacturer/files?parent_id='+parentId).then((response) => {
+                    this.selected_media = [];
+                    // this.media = response.body;
                 });
             }
         },

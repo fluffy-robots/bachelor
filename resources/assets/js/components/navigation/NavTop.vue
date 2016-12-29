@@ -1,5 +1,5 @@
 <template>
-    <div class="nav-top animated fadeIn">
+    <div class="nav-top">
         <search-bar class="nav-top--search"></search-bar>
         <div class="nav-top--buttons">
             <a class="nav-top--notification"><span class="icon"><i class="fa fa-bell"></i></span></a>

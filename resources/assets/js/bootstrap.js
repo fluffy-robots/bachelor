@@ -1,3 +1,6 @@
+// window.Pace = require('pace');
+// Pace.start();
+
 
 window._ = require('lodash');
 
