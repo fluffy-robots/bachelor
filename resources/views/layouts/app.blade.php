@@ -30,7 +30,7 @@
     	<div class="container is-fluid">
 	        <div class="columns is-gapless">
 	        	<div class="column is-2">
-	        		<div class="logo"><strong>SHOP</strong>IMPORT</div>
+	        		<div class="logo animated zoomIn"><strong>SHOP</strong>IMPORT</div>
 	        		<nav-left></nav-left>
 	        	</div>
 	        	<div class="column">
