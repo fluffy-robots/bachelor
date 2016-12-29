@@ -8,7 +8,7 @@
 		<div class="manufacturer-products--list-container"
 			v-for="product in products"
 		>
-			<div class="manufacturer-products--list" v-show="!isSelected(product)">
+			<div class="manufacturer-products--list animated fadeIn" v-show="!isSelected(product)">
 			<img class="list-image" :src="product.image" alt="Product Image" >
 				<p class="product--title">{{ product.name }}</p>
 				<ul>
@@ -21,7 +21,7 @@
                   <i class="fa" :class="{'fa-plus' : !isSelected(product)}"></i>
                 </span>
 			</div>
-			<div class="manufacturer-product--expanded" v-show="isSelected(product)">
+			<div class="manufacturer-product--expanded animated fadeIn" v-show="isSelected(product)">
 				<div class="columns">
 					<div class="column is-2">
 						<img class="list-image" :src="product.image" alt="Product Image" >

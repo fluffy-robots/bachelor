@@ -4,9 +4,20 @@
 
 
 .manufacturer-products--header{
-    display: flex;
+	display: flex;
     align-items: center;
-    justify-content: space-between;
+    height: 50px;
+    padding-left: 90px;
+    width: 100%;
+    font-weight: bold;
+    :first-child {
+    	width: 200px;
+    	margin-right: 10px;
+    }
+
+    :last-child {
+    	margin-left: 48%;
+    }
 }
 
 .manufacturer-products--list{
@@ -56,12 +67,12 @@
 .product--title {
 	font-weight: bold;
 	margin-right: 10px;
-	width: 200px;
+	min-width: 200px!important;
 }
 
 .product--updatet {
 	float: right;
-	width: 300px;
+	min-width: 300px;
 }
 
 .produkt--knppen {
@@ -76,6 +87,7 @@
 	  width: 100%;
 	  background: #fff;
 	  border-bottom: 2px solid $primary;
+	  margin-top: 10px;
 }
 
 .product--e-header {

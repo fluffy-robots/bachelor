@@ -29,7 +29,7 @@ body{
 .main-content {
     overflow: auto;
     height: calc( 100vh - 112px);
-    padding: 15px;
+    //padding: 15px;
     background: #f5f5f5;
 }
 .logo strong {
@@ -94,6 +94,11 @@ h5 {
 .fadeInLeft {
     -webkit-animation-duration: 0.1s;
     animation-duration: 0.1s;
+}
+
+.slideInDown {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
 }
 
 
