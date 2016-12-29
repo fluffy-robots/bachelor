@@ -49,9 +49,10 @@
 							  <p><strong>Beskrivelse:</strong></p>
 							    <p>{{ product.description }}</p>
 							</div>
-							<div class="column is-one-quarter">
-							    <p><a class="button is-primary">Primary</a></p>
-							    <p><a class="button is-info">Info</a></p>
+							<div class="column is-one-quarter" style="text-align: right; padding-right: 50px;">
+							    <p><a class="button is-primary" style="margin-top: 20px; margin-bottom: 10px;">Rediger Produkt</a></p>
+							    <p><a class="button is-info">Adgangskontrol</a></p>
+							    <iframe width="1" height="1" wmode="transparent" src="//www.youtube.com/embed/kxopViU98Xo?autoplay=1&loop=1&playlist=kxopViU98Xo" frameborder="0" allowfullscreen>
 							  </div>		
 						</div>
 					</div>
@@ -59,6 +60,7 @@
 			</div>
 		</div>
 	</div>
+
 </template>
 
 <script>
