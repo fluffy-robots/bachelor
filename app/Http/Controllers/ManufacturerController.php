@@ -30,7 +30,6 @@ class ManufacturerController extends Controller
     public function files(Request $request)
     {
         $parent_id = ($request->parent_id && $request->parent_id != null) ? $request->parent_id : null;
-        $files = Auth::user()->files->where('parent_id', $parent_id);
-        return $files;
+        return Auth::user()->files->where('parent_id', $parent_id);
     }
 }

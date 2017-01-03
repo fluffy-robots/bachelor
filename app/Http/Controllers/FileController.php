@@ -2,82 +2,71 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
+use App\File;
+use Uuid;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
 
 class FileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        dd(Auth::guard('api')->user());
+        $user = Auth::guard('api')->user();
+        $user_directory = Str::slug($user->name);
+
+        $file_name = Uuid::generate(4);
+
+        $type = ($request->type) ? $request->type : 'undefined';
+
+        $file = new File([
+            'name' => $request->name,
+            'type' => $type,
+            'path' => 'public/media/'.$user_directory,
+            'parent_id' => ($request->parent_id != 0) ? $request->parent_id : null,
+            'user_id' => $user->id
+        ]);
+        $file->save();
+
+        $path = 'public/media/'.$user_directory.'/'.$file->id;
+        if(!Storage::makeDirectory($path))
+        { 
+            $file->delete();
+            return response('Unable to create Directory', 500); 
+        }
+        $file->path = $path;
+        $file->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

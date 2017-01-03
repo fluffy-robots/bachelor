@@ -68,3 +68,9 @@
 		}
 	}
 }
+
+.breadcrumbs a:not(:last-child):after {
+    content: ">";
+    padding: 0 7px;
+    font-weight: bold;
+}

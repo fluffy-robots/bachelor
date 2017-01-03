@@ -15,7 +15,7 @@ class DevSeed extends Seeder
     {
         // Developers
         $martin = New User([
-        	'name' => 'Martin',
+        	'name' => 'Martin Kenth Knudsen',
         	'email' => 'admin@webkenth.dk',
         	'password' => Hash::make('password'),
             'role' => 'admin',
@@ -25,7 +25,7 @@ class DevSeed extends Seeder
 
 
         $morten = New User([
-        	'name' => 'Morten',
+        	'name' => 'Morten Skøtt Gregersen',
         	'email' => 'mooorten@gmail.com',
         	'password' => Hash::make('password'),
             'role' => 'admin',
@@ -35,7 +35,7 @@ class DevSeed extends Seeder
 
 
         $jonas = New User([
-            'name' => 'Jonas',
+            'name' => 'Jonas Boyer Hansen',
             'email' => 'jb1497@gmail.com',
             'password' => Hash::make('password'),
             'role' => 'admin',

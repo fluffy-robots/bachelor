@@ -9859,6 +9859,12 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
   color: #fff;
 }
 
+.breadcrumbs a:not(:last-child):after {
+  content: ">";
+  padding: 0 7px;
+  font-weight: bold;
+}
+
 .rightclickmenu {
   width: 250px;
   background: #fff;
@@ -9889,6 +9895,7 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
   background: #ededed;
   border-left: 4px solid #ef6b45;
   padding-left: 16px;
+  cursor: pointer;
 }
 
 .shopkeeper--background {
