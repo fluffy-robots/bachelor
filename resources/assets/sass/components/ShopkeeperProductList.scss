@@ -1,0 +1,73 @@
+.sk-pl--must {
+	background:$primary;
+	color: #fff;
+	line-height: 24px;
+	font-family: 'Open Sans', sans-serif;
+
+	.column:first-child {
+		text-align: center;
+		font-size: 20px;
+	}
+
+	.icon {
+		margin-right: 5px;
+	}
+}
+
+.sk-pl--product {
+	color: $text-color;
+	line-height: 24px;
+	font-family: 'Open Sans', sans-serif;
+	background: #fff;
+	border-bottom: 1px solid $light-grey;
+	vertical-align: middle;
+
+
+	.column:first-child {
+		text-align: center;
+		padding-top: 10px;
+		margin-left: 0px
+	}
+
+	.column {
+		padding-top: 40px;
+		margin-left: 10px
+	}
+
+	img {
+		width: 80px;
+		height: 80px;
+	}
+}
+
+.sk-pl--waiting {
+	background: #f5ba42;
+	color: #fff;
+	line-height: 24px;
+	font-family: 'Open Sans', sans-serif;
+
+	.column:first-child {
+		text-align: center;
+		font-size: 20px;
+	}
+
+	.icon {
+		margin-right: 5px;
+	}
+}
+
+.sk-pl--go {
+	background: #82c250;
+	color: #fff;
+	line-height: 24px;
+	font-family: 'Open Sans', sans-serif;
+
+	.column:first-child {
+		text-align: center;
+		font-size: 20px;
+	}
+
+	.icon {
+		margin-right: 5px;
+	}
+}
