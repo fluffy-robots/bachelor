@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,20 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Auth::user()->products()->paginate(5);
+
+        foreach($products->all() as $product)
+        {
+            $product->load('tags');
+            $links[] = [ 'href' => url('/api/v1/products/'.$product->id) ];
+        }
+        
+        $products->links = [
+            'self' => url('/api/v1/products'),
+            'items' => $links
+        ];
+        
+        return $products;
     }
 
     /**

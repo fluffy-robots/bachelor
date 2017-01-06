@@ -1,6 +1,18 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
+@font-face {
+  font-family: barcode;
+  src: url("/fonts/code39.ttf");
+}
+
+.barcode {
+  font-family: barcode;
+  font-size: 3em;
+  width: 100%;
+  text-align: center;
+  border: none;
+}
+
 /*! bulma.io v0.2.3 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -9547,6 +9559,11 @@ body {
   font-weight: 200;
 }
 
+.disabled-link {
+  color: grey !important;
+  cursor: text !important;
+}
+
 h1 {
   color: grey;
   font-family: 'Open Sans', sans-serif;
@@ -9696,17 +9713,13 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
   align-items: center;
   height: 50px;
   padding-left: 90px;
-  width: 100%;
   font-weight: bold;
+  width: calc( 90% + 90px);
 }
 
-.manufacturer-products--header :first-child {
-  width: 200px;
-  margin-right: 10px;
-}
-
-.manufacturer-products--header :last-child {
-  margin-left: 48%;
+.manufacturer-products--header a {
+  -webkit-box-flex: 1;
+  flex: 1;
 }
 
 .manufacturer-products--list {
@@ -9730,7 +9743,8 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 
 .manufacturer-products--list ul {
   white-space: nowrap;
-  width: 100%;
+  -webkit-box-flex: 1;
+  flex: 1;
 }
 
 .manufacturer-products--list ul :first-child {
@@ -9753,7 +9767,8 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 .product--title {
   font-weight: bold;
   margin-right: 10px;
-  min-width: 200px !important;
+  -webkit-box-flex: 1;
+  flex: 1;
 }
 
 .product--updatet {
@@ -9787,6 +9802,202 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 
 .product--e-icon {
   margin-right: 30px;
+  color: #ef6b45;
+}
+
+.manufacturer-product--pagination {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.manufacturer-product--pagination nav {
+  display: -webkit-box;
+  display: flex;
+  padding: 15px 15px 0 15px;
+}
+
+.manufacturer-product--pagination nav p {
+  margin: 0 20px;
+}
+
+.manufacturer-product--name {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.product-controls--expanded {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.product-controls--expanded button {
+  margin-bottom: 15px;
+}
+
+.manufacturer-product-edit--container {
+  background: #fff;
+  margin-top: -5px;
+  height: calc( 100vh - 120px);
+}
+
+.manufacturer-product-edit--basic {
+  padding: 15px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  height: calc( 100% - 60px);
+}
+
+.manufacturer-product-edit--basic .columns {
+  -webkit-box-flex: 1;
+  flex: 1;
+  margin-bottom: 150px;
+}
+
+.manufacturer-product-edit--basic .button {
+  margin-left: 90%;
+}
+
+.manufacturer-product-edit--basic .column {
+  padding: 20px 30px;
+}
+
+.manufacturer-product-edit--basic .column:nth-child(2) {
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+}
+
+.manufacturer-product-edit--basic .control {
+  margin-bottom: 25px;
+}
+
+.manufacturer-product-edit--basic textarea {
+  min-height: 200px;
+  height: auto;
+}
+
+.manufacturer-product-edit--basic select {
+  width: 100%;
+  height: 150px;
+}
+
+.manufacturer-product-edit--back-button {
+  border: 1px solid #ef6b45 !important;
+  margin-left: 5px;
+}
+
+.tag-container .create {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: -20px;
+}
+
+.tag-container .create input {
+  background: white;
+}
+
+.tag-container .tag {
+  border-radius: 0;
+  margin: 5px;
+  border: 1px solid lightgrey;
+  padding-right: 1px;
+}
+
+.tag-container .icon {
+  cursor: pointer;
+  color: #ef6b45;
+}
+
+.manufacturer-product-edit--images {
+  padding: 15px;
+}
+
+.manufacturer-product-edit--images .media--file-image {
+  min-height: 0;
+}
+
+.manufacturer-product-edit--images .media--page-padding {
+  padding-top: 15px;
+}
+
+.has-border-right {
+  border-right: 1px solid lightgrey;
+  margin-right: 30px;
+}
+
+.manufacturer-product-edit--variants {
+  padding: 15px;
+}
+
+.manufacturer-product-edit--variants .variants-container {
+  border-right: 1px solid lightgrey;
+  margin-right: 25px;
+  padding-right: 25px;
+}
+
+.manufacturer-product-edit--variants .variants-container .variants-group {
+  margin-right: 35px;
+  margin-left: 10px;
+}
+
+.manufacturer-product-edit--variants .variants-container .variants-group, .manufacturer-product-edit--variants .variants-container .variants-type {
+  border: 1px solid grey;
+  padding: 0;
+  height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.manufacturer-product-edit--variants .variants-container .variants-group .variant--item, .manufacturer-product-edit--variants .variants-container .variants-type .variant--item {
+  width: 100%;
+  text-align: center;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.manufacturer-product-edit--variants .variants-container .variants-group .variant--selected,
+.manufacturer-product-edit--variants .variants-container .variants-group .variant--item:hover, .manufacturer-product-edit--variants .variants-container .variants-type .variant--selected,
+.manufacturer-product-edit--variants .variants-container .variants-type .variant--item:hover {
+  color: white;
+  background: #ef6b45;
+}
+
+.manufacturer-product-edit--variants .variants-container .variant-add--container {
+  display: -webkit-box;
+  display: flex;
+}
+
+.manufacturer-product-edit--variants .variants-container .variant-add--container .variants-add {
+  -ms-grid-row-align: center;
+  align-self: center;
+  border: 1px solid #ef6b45;
+  margin-left: 17px;
+}
+
+.manufacturer-product-edit--variants .variants-selected--container .variant-selected {
+  border-radius: 0;
+  margin: 5px;
+  border: 1px solid #ef6b45;
+  padding-right: 1px;
+  background: white;
+  font-size: 15px;
+}
+
+.manufacturer-product-edit--variants .variants-selected--container .variant-selected .icon {
+  cursor: pointer;
   color: #ef6b45;
 }
 

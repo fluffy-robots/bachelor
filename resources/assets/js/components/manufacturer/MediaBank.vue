@@ -1,5 +1,5 @@
 <template>
-    <div @click="hideContextMenu">
+    <div style="background: white;" @click="hideContextMenu">
         <nav class="nav has-shadow page-control">
             <button class="button is-medium is-primary" @click="showUploadDropdown = !showUploadDropdown">Ny</button>
             <transition name="fade">

@@ -1,7 +1,19 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+@font-face{
+  font-family: barcode;
+  src: url('/fonts/code39.ttf');
+}
+.barcode{
+  font-family: barcode;
+  font-size: 3em;
+  width: 100%;
+  text-align: center;
+  border: none;
+}
 
 // Variables
 @import "variables";
@@ -47,6 +59,11 @@ body{
     font-weight: 200;
 }
 
+.disabled-link{
+  color: grey !important;
+  cursor: text !important;
+}
+
 
 //Headers
 
@@ -82,6 +99,7 @@ h5 {
 @import "./components/NavTop";
 @import "./components/NavLeft";
 @import "./components/ManufacturerProducts";
+@import "./components/ManufacturerProductEdit";
 @import "./components/mediabank";
 @import "./components/RightClickMenu";
 @import "./components/shopkeepers";

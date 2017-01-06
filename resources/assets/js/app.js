@@ -33,6 +33,8 @@ Vue.component('manufacturers', require('./components/shopkeeper/Manufacturers.vu
 // Fields
 
 
+// Plugins
+
 
 window.EventHub = new Vue();
 
