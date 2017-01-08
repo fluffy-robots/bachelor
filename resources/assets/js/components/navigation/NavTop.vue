@@ -19,7 +19,9 @@
         },
         methods: {
             logout() {
-                this.$http.post('/logout', Laravel.csrfToken).then(() => {
+                this.$http.post('/logout', Laravel.csrfToken).then((response) => {
+                    window.location.href = "/";
+                }, (response) => {
                     window.location.href = "/";
                 });
 
