@@ -33,15 +33,15 @@
         data() {
             return {
                 shopkeeperMenuItems: [
-                    { name: 'Dashboard', route: '/home', icon: 'fa-user'},
-                    { name: 'Products', route: '/shopkeeper/products', icon: 'fa-cog'},
-                    { name: 'Manufacturer', route: '/shopkeeper/manufacturer', icon: 'fa-adjust'},
+                    { name: 'Dashboard', route: '/home', icon: 'fa-tachometer'},
+                    { name: 'Produkt Oversigt', route: '/shopkeeper/products', icon: 'fa-shopping-cart'},
+                    { name: 'Producenter Oversigt', route: '/shopkeeper/manufacturer', icon: 'fa-users'},
                 ],
                 manufacturerMenuItems: [
-                    { name: 'Dashboard', route: '/home', icon: 'fa-user'},
-                    { name: 'Products', route: '/manufacturer/products', icon: 'fa-cog'},
-                    { name: 'Media', route: '/manufacturer/media', icon: 'fa-home'},
-                    { name: 'Shopkeeper', route: '/manufacturer/shopkeeper', icon: 'fa-home'}
+                    { name: 'Dashboard', route: '/home', icon: 'fa-tachometer'},
+                    { name: 'Produkt Oversigt', route: '/manufacturer/products', icon: 'fa-shopping-cart'},
+                    { name: 'Medie Bank', route: '/manufacturer/media', icon: 'fa-archive'},
+                    { name: 'Forhandler Oversigt', route: '/manufacturer/shopkeeper', icon: 'fa-users'}
                 ]
             }
         },

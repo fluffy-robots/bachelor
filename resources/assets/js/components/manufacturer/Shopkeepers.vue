@@ -1,7 +1,7 @@
 <template>
 <div class="shopkeeper--background">
     <nav class="nav has-shadow page-control animated fadeIn">
-        <a class="button is-medium is-primary" v-if="">GEM</a>
+    	<label class="label">Forhandler Oversigt</label>
     </nav>
 	<article class="message is-warning shopkeeeper--message">
 		<div class="message-header shopkeeper--message-header">

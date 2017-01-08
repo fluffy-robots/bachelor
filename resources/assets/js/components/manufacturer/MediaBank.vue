@@ -1,21 +1,74 @@
 <template>
     <div style="background: white;" @click="hideContextMenu">
         <nav class="nav has-shadow page-control">
-            <button class="button is-medium is-primary" @click="showUploadDropdown = !showUploadDropdown">Ny</button>
-            <transition name="fade">
-                <div class="upload-dropdown" v-show="showUploadDropdown">
-                    <input type="text" class="input" placeholder="Ny Mappe" v-model="newFolderName">
-                    <button class="button is-primary" @click.prevent="createNewFolder" :disabled="newFolderName.length == 0">Ny Mappe</button>
-                    <form 
-                        action="/file-upload"
-                        class="dropzone"
-                        id="my-awesome-dropzone"
-                    ></form>
-                </div>
-            </transition>
-            <span class="nav-item breadcrumbs">
-                <a v-for="breadcrumb in breadcrumbs" @click="goToBreadcrumb(breadcrumb)">{{breadcrumb.name}}</a>
-            </span>
+            <div class="nav-left">
+                <button class="button is-medium is-primary" @click="showUploadDropdown = !showUploadDropdown">
+                    Ny 
+                    <span class="icon" style="padding-left: 10px;">
+                        <i class="fa fa-caret-down"></i>
+                    </span>
+                </button>
+                <transition name="fade">
+                    <div class="upload-dropdown" v-show="showUploadDropdown">
+                        <input type="text" class="input" placeholder="Ny Mappe" v-model="newFolderName">
+                        <button class="button is-primary" @click.prevent="createNewFolder" :disabled="newFolderName.length == 0">Opret Mappe</button>
+                        <form 
+                            action="/file-upload"
+                            class="dropzone"
+                            id="my-awesome-dropzone"
+                        ></form>
+                    </div>
+                </transition>
+                <span class="nav-item breadcrumbs">
+                    <a v-for="breadcrumb in breadcrumbs" @click="goToBreadcrumb(breadcrumb)">{{breadcrumb.name}}</a>
+                </span>
+            </div>
+            <div class="nav-center">
+            </div>
+            <div class="nav-right">
+                <span class="media-controls separator" v-show="selected_media.length > 0">
+                    <a class="button is-primary is-inverted">
+                        <span class="icon">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </a>
+                    <a class="button is-primary is-inverted">
+                        <span class="icon">
+                            <i class="fa fa-pencil"></i>
+                        </span>
+                    </a>
+                    <a class="button is-primary is-inverted">
+                        <span class="icon">
+                            <i class="fa fa-arrows"></i>
+                        </span>
+                    </a>
+                    <a class="button is-primary is-inverted">
+                        <span class="icon">
+                            <i class="fa fa-trash"></i>
+                        </span>
+                    </a>
+                    <a class="button is-primary is-inverted">
+                        <span class="icon">
+                            <i class="fa fa-files-o"></i>
+                        </span>
+                    </a>
+                    <a class="button is-primary is-inverted">
+                        <span class="icon">
+                            <i class="fa fa-download"></i>
+                        </span>
+                    </a>
+                </span>
+                <a class="button is-primary is-medium is-inverted">
+                    <span class="icon">
+                        <i class="fa fa-list"></i>
+                    </span>
+                </a>
+                <a class="button is-primary is-medium is-inverted">
+                    <span class="icon">
+                        <i class="fa fa-th-large"></i>
+                    </span>
+                </a>
+            </div>
         </nav>
 
         <div class="columns">

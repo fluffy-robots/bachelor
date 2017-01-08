@@ -19,6 +19,7 @@
     "animate-scss": "^3.2.1",
     "animate.css": "^3.5.2",
     "bulma": "^0.2.3",
+    "dropzone": "^4.3.0",
     "font-awesome": "^4.7.0",
     "pace-progress": "^1.0.2",
     "toastr": "^2.1.2",

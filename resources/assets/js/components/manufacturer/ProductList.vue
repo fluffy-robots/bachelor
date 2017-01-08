@@ -28,7 +28,25 @@
 				<h3 class="manufacturer-product--name">{{selectedProduct.name}}</h3>
 			</div>
 			<div class="nav-right">
-				
+				<a class="button is-primary is-inverted is-icon">
+					<span class="icon">
+						<i class="fa fa-file"></i>
+					</span>
+					<span>Eksporter</span>
+				</a>
+				<div class="separator"></div>
+				<a class="button is-primary is-inverted is-icon">
+					<span class="icon">
+						<i class="fa fa-list"></i>
+					</span>
+					<span>Saml Alle</span>
+				</a>
+				<a class="button is-primary is-inverted is-icon">
+					<span class="icon">
+						<i class="fa fa-th-list"></i>
+					</span>
+					<span>Udvid alle</span>
+				</a>
 			</div>
         </nav>
         <manufacturer-product-edit :product="selectedProduct" v-show="showEditForm"></manufacturer-product-edit>

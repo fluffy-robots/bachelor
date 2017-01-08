@@ -32,3 +32,8 @@
     display: inline-flex;
     align-items: center;
 }
+.nav-top--logout,
+.nav-top--settings,
+.nav-top--notification {
+    color: $brownish;
+}

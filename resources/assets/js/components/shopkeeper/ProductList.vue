@@ -1,7 +1,31 @@
 <template>
     <div class="manufacturer-products--container">
         <nav class="nav has-shadow page-control animated fadeIn">
-            <a class="button is-medium is-primary" v-if="">GEM</a>
+			<div class="nav-left"></div>
+        	<div class="nav-center">
+				
+			</div>
+			<div class="nav-right">
+				<a class="button is-inverted is-icon">
+					<span class="icon">
+						<i class="fa fa-file"></i>
+					</span>
+					<span>Eksporter</span>
+				</a>
+				<span class="separator"></span>
+				<a class="button is-inverted is-icon">
+					<span class="icon">
+						<i class="fa fa-list"></i>
+					</span>
+					<span>Saml Alle</span>
+				</a>
+				<a class="button is-inverted is-icon">
+					<span class="icon">
+						<i class="fa fa-th-list"></i>
+					</span>
+					<span>Udvid alle</span>
+				</a>
+			</div>
         </nav>
 
         <!-- produkter som mangler -->

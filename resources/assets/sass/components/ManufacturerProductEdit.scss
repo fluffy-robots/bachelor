@@ -94,7 +94,7 @@
         .variants-group,.variants-type{
             border: 1px solid grey;
             padding: 0;
-            height: 50vh;
+            height: 60vh;
             overflow-y: auto;
             overflow-x: hidden;
 
@@ -133,5 +133,30 @@
                 color: $primary;
             }
         }
+    }
+}
+
+
+.manufacturer-product-edit--technical{
+    padding: 15px;
+
+    .field-options--container,
+    .field-option--select,
+    .field-option--control{
+        padding: 15px;
+    }
+    .field-option--select{
+        .select, select{
+            width: 100%;
+        }
+    }
+    .field-option{
+        padding: 5px;
+        .checkbox{
+            width: 100%;
+        }
+    }
+    .has-border-right{
+        height: 65vh;
     }
 }

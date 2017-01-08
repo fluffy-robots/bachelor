@@ -28,17 +28,17 @@
 					<li>Sofabordet Kaj</li>
 					<li>Sofabordet Kastangje</li>
 				</div>
-				<h3>Menu Punkter</h3>
-				<div>
-					<li>Produkter</li>
-					<li>Noget Andet</li>
-					<li>Bare Test</li>
-				</div>
 				<h3>Mediebank</h3>
 				<div>
 					<li>Det Flotte Billede.png</li>
 					<li>Mere Billed.jpg</li>
 					<li>Samlevejledning.pdf</li>
+				</div>
+				<h3>Menu Punkter</h3>
+				<div>
+					<li>Produkter</li>
+					<li>Noget Andet</li>
+					<li>Bare Test</li>
 				</div>
 			</div>
 		</div>

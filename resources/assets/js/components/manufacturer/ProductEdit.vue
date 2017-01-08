@@ -29,7 +29,7 @@
 			</ul>
 	    </div>
 
-	    <div class="manufacturer-product-edit--basic" v-show="showBasic">
+	    <div class="manufacturer-product-edit--basic animated fadeIn" v-show="showBasic">
 	    	<div class="columns">
 	    		<div class="column">
 	    			<label class="label">Produkt Title</label>
@@ -101,13 +101,13 @@
 	    		<button class="button is-primary is-medium is-pulled-right" @click="activateTab('images')">Næste</button>
 	    	</div>
 	    </div>
-	    <div class="manufacturer-product-edit--images" v-show="showImages">
+	    <div class="manufacturer-product-edit--images animated fadeIn" v-show="showImages">
 	    	<div class="columns">
 	    		<div class="column is-8 has-border-right">
 	    			<label class="label">Mapper</label>
 
 	    			<div class="columns media--page-padding">
-			            <div class="column is-2 is-gapless media--hover animated zoomInRight">
+			            <div class="column is-2 is-gapless media--hover animated fadeIn">
 			                <div class="media--map-box">
 			                    <span class="icon is-medium">
 			                      <i class="fa fa-folder"></i>
@@ -115,7 +115,7 @@
 			                    <h5>test</h5>
 			                </div>
 			            </div>
-			            <div class="column is-2 is-gapless media--hover animated zoomInRight">
+			            <div class="column is-2 is-gapless media--hover animated fadeIn">
 			                <div class="media--map-box">
 			                    <span class="icon is-medium">
 			                      <i class="fa fa-folder"></i>
@@ -123,7 +123,7 @@
 			                    <h5>test</h5>
 			                </div>
 			            </div>
-			            <div class="column is-2 is-gapless media--hover animated zoomInRight">
+			            <div class="column is-2 is-gapless media--hover animated fadeIn">
 			                <div class="media--map-box">
 			                    <span class="icon is-medium">
 			                      <i class="fa fa-folder"></i>
@@ -131,7 +131,7 @@
 			                    <h5>test</h5>
 			                </div>
 			            </div>
-			            <div class="column is-2 is-gapless media--hover animated zoomInRight">
+			            <div class="column is-2 is-gapless media--hover animated fadeIn">
 			                <div class="media--map-box">
 			                    <span class="icon is-medium">
 			                      <i class="fa fa-folder"></i>
@@ -139,7 +139,7 @@
 			                    <h5>test</h5>
 			                </div>
 			            </div>
-			            <div class="column is-2 is-gapless media--hover animated zoomInRight">
+			            <div class="column is-2 is-gapless media--hover animated fadeIn">
 			                <div class="media--map-box">
 			                    <span class="icon is-medium">
 			                      <i class="fa fa-folder"></i>
@@ -150,7 +150,7 @@
 			        </div>
 	    			<label class="label">Filer</label>
 	    			<div class="columns media--page-padding">
-			        	<div class="column is-2 media--text-align media--hover animated zoomInRight media--active">
+			        	<div class="column is-2 media--text-align media--hover animated fadeIn media--active">
 			        		<div class="media--file-image">
 			        			<img src="/images/0/test.png" alt="File Image">
 			        		</div>
@@ -163,7 +163,7 @@
 			                    </h5>
 			        		</div>
 			        	</div>
-			        	<div class="column is-2 media--text-align media--hover animated zoomInRight">
+			        	<div class="column is-2 media--text-align media--hover animated fadeIn">
 			        		<div class="media--file-image">
 			        			<img src="/images/0/test.png" alt="File Image">
 			        		</div>
@@ -176,7 +176,7 @@
 			                    </h5>
 			        		</div>
 			        	</div>
-			        	<div class="column is-2 media--text-align media--hover animated zoomInRight">
+			        	<div class="column is-2 media--text-align media--hover animated fadeIn">
 			        		<div class="media--file-image">
 			        			<img src="/images/0/test.png" alt="File Image">
 			        		</div>
@@ -195,7 +195,7 @@
 	    			<label class="label">Valgte Billeder:</label>
 	    			<ul>
 	    				<li style="width: 100px; height: 150px;">
-	    					<div class="media--text-align media--hover animated zoomInRight">
+	    					<div class="media--text-align media--hover animated fadeIn">
 				        		<div class="selected-image" style="border: 1px solid lightgrey">
 				        			<img 
 					        			style="width: 100px; max-height: 200px;"
@@ -209,8 +209,12 @@
 	    			</ul>
 	    		</div>
 	    	</div>
+	    	<div>
+	    		<hr>
+	    		<button class="button is-primary is-medium is-pulled-right" @click="activateTab('variants')">Næste</button>
+	    	</div>
 	    </div>
-	    <div class="manufacturer-product-edit--variants" v-show="showVariants">
+	    <div class="manufacturer-product-edit--variants animated fadeIn" v-show="showVariants">
 	    	<div class="columns">
 	    		<div class="column is-two-thirds variants-container has-text-centered">
 	    			<div class="columns">
@@ -369,8 +373,67 @@
 	    			</div>
 	    		</div>
 	    	</div>
+	    	<div>
+	    		<hr>
+	    		<button class="button is-primary is-medium is-pulled-right" @click="activateTab('technical')">Næste</button>
+	    	</div>
 	    </div>
-	    <div class="manufacturer-product-edit--technical" v-show="showTechnical">Tekniske Detaljer</div>
+	    <div class="manufacturer-product-edit--technical animated fadeIn" v-show="showTechnical">
+			<div class="columns">
+				<div class="column is-4 has-border-right">
+					<div class="field-option--select">
+						<label class="label">Tilføj Felt</label>
+						<div class="control">
+							<span class="select is-medium">
+								<select name="field">
+									<option value="1">Mål</option>
+								</select>
+							</span>
+						</div>
+					</div>
+					<div class="field-options--container">
+						<div class="field-option">
+							<div class="control">
+								<label class="checkbox">
+									<input type="checkbox" name="question">
+									Højde
+								</label>
+							</div>
+						</div>
+						<div class="field-option">
+							<div class="control">
+								<label class="checkbox">
+									<input type="checkbox" name="question">
+									Bredde
+								</label>
+							</div>
+						</div>
+						<div class="field-option">
+							<div class="control">
+								<label class="checkbox">
+									<input type="checkbox" name="question">
+									Længde
+								</label>
+							</div>
+						</div>
+						<div class="field-option">
+							<div class="control">
+								<label class="checkbox">
+									<input type="checkbox" name="question">
+									Dybde
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="field-option--control">
+						<button class="button is-primary is-medium is-pulled-right">Gem og Tilføj</button>
+					</div>
+				</div>
+				<div class="column">
+					
+				</div>
+			</div>
+	    </div>
 
 	</div>
 </template>

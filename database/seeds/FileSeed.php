@@ -17,50 +17,30 @@ class FileSeed extends Seeder
 
     	foreach ($users as $user) 
     	{
-	        $image = New File([
-	        	'name' => 'Test Billede',
-	        	'path' => '/images/0/test.png',
-	        	'type' => 'image',
-	        	'user_id' => $user->id,
-	        	'parent_id' => NULL
-	    	]);
-	        $image->save();
+    		$folders = factory(File::class, 5)->create([
+    			'type' => 'folder',
+    			'user_id' => $user->id
+			]);
+			
+    		$images = factory(File::class, 5)->create([
+    			'type' => 'image',
+    			'user_id' => $user->id
+			]);
 
-	        $pdf = New File([
-	        	'name' => 'Test PDF',
-	        	'path' => '/images/0/test.png',
-	        	'type' => 'pdf',
-	        	'user_id' => $user->id,
-	        	'parent_id' => NULL
-	    	]);
-	        $pdf->save();
+			$pdfs = factory(File::class, 5)->create([
+				'type' => 'pdf',
+				'user_id' => $user->id
+			]);
 
-	        $folder = New File([
-	        	'name' => 'Test Folder',
-	        	'path' => '/images/0/test.png',
-	        	'type' => 'folder',
-	        	'user_id' => $user->id,
-	        	'parent_id' => NULL
-	    	]);
-	        $folder->save();
+			$excels = factory(File::class, 5)->create([
+				'type' => 'excel',
+				'user_id' => $user->id
+			]);
 
-	        $excel = New File([
-	        	'name' => 'Test Excel',
-	        	'path' => '/images/0/test.png',
-	        	'type' => 'excel',
-	        	'user_id' => $user->id,
-	        	'parent_id' => NULL
-	    	]);
-	        $excel->save();
-
-	        $file = New File([
-	        	'name' => 'Test Folder',
-	        	'path' => '/images/0/test.png',
-	        	'type' => 'file',
-	        	'user_id' => $user->id,
-	        	'parent_id' => NULL
-	    	]);
-	        $file->save();
+			$file = factory(File::class, 5)->create([
+				'type' => 'file',
+				'user_id' => $user->id
+			]);
     	}
     }
 }

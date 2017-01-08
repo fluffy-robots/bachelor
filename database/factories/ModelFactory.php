@@ -36,7 +36,17 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Tag::class, function (Faker\Generator $faker) {
     return [
-    	'user_id' => 1,
+        'user_id' => 1,
         'name' => $faker->word,
+    ];
+});
+
+$factory->define(App\File::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'path' => $faker->imageUrl(640, 480, 'technics'),
+        'type' => 'file',
+        'user_id' => 1,
+        'parent_id' => null
     ];
 });

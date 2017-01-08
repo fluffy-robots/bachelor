@@ -13,6 +13,7 @@
   width: 100%;
   text-align: center;
   border: none;
+  color: black;
 }
 
 // Variables
@@ -25,6 +26,8 @@
 @import "node_modules/bulma/bulma";
 // Font Awesome
 @import "node_modules/font-awesome/scss/font-awesome";
+// Dropzone JS
+@import "node_modules/dropzone/dist/dropzone";
 // Animate.css
 // @import "node_modules/animate.css/animate.css";
 
@@ -64,7 +67,22 @@ body{
   cursor: text !important;
 }
 
-
+.is-icon:hover{
+    border-bottom: 1px solid $primary;
+}
+.is-icon{
+    color: $brownish !important;
+}
+.is-icon:active{
+    color: $primary !important;
+    border-bottom: 1px solid $primary;
+}
+// .icon{
+//     color: $brownish;
+//     :active{
+//       color: $primary;
+//     }
+// }
 //Headers
 
 h1 {

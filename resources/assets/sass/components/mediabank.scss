@@ -57,7 +57,7 @@
 		color: white;
 	}
 	.media--file-image {
-		border: 2px solid $primary;
+		border: 1px solid $primary;
 	}
 
 	.media--file-image-text {
@@ -69,8 +69,38 @@
 	}
 }
 
+.breadcrumbs{
+	margin-left: 25px;
+}
 .breadcrumbs a:not(:last-child):after {
     content: ">";
     padding: 0 7px;
     font-weight: bold;
+}
+
+.media-controls{
+	display: flex;
+    align-items: center;
+}
+
+.dropzone{
+	border: 2px dashed $primary;
+    border-radius: 5px;
+    background: white;
+    margin-top:15px;
+}
+
+.upload-dropdown{
+    position: fixed;
+    top: 106px;
+    width: 50vw;
+    background: white;
+	border: 1px solid black;
+    border-radius: 2px;
+    padding: 5px;
+    text-align: left;
+}
+
+.upload-dropdown input {
+    width: 300px;
 }

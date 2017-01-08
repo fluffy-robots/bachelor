@@ -7,26 +7,14 @@
     width: calc( 100% - 16.6666666667%);
 }
 
-.upload-dropdown{
-    position: fixed;
-    top: 106px;
-    width: 50vw;
-    height: 70vh;
-    background: rgba(255, 255, 255, 0.75);
-	border: 1px solid black;
-    border-radius: 2px;
-    padding: 5px;
-    text-align: left;
+.separator{
+    border-right: 1px solid lightgrey;
 }
 
-.upload-dropdown form{
-    width: 100%;
-    background: red;
-    padding-top: 5px;
-    height: calc(100% - 32px);
-}
+.page-control{
 
-.upload-dropdown input {
-    width: 300px;
+    .button .icon:last-child, .button .tag:last-child {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
-
