@@ -43,6 +43,15 @@ class DevSeed extends Seeder
         ]);
         $jonas->save();
 
+        $admin = New User([
+            'name' => 'Administrator Adminson',
+            'email' => 'admin@admin.dk',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
+            'api_token' => str_random(60)
+        ]);
+        $admin->save();
+
         $manufacturer = New User([
             'name' => 'Manufacturer',
             'email' => 'manu@manu.dk',

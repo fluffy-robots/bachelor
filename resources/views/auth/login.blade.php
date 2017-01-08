@@ -10,10 +10,12 @@
 
     <title>{{ config('app.name', 'Shop-Import') }}</title>
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
 <body>
+    <!-- http://lorempixel.com/1920/1080/ -->
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -73,6 +75,23 @@
                                 </div>
                             </div>
                         </form>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>Forhandler</h3>
+                                <h5>Username: <strong>shop@shop.dk</strong></h5>
+                                <h5>Password: <strong>password</strong></h5>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>Admin</h3>
+                                <h5>Username: <strong>admin@admin.dk</strong></h5>
+                                <h5>Password: <strong>password</strong></h5>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>Producent</h3>
+                                <h5>Username: <strong>manu@manu.dk</strong></h5>
+                                <h5>Password: <strong>password</strong></h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
