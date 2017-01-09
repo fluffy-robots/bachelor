@@ -50,23 +50,21 @@
 	    		</div>
 	    		<div class="column">
 	    			<label class="label">Tags</label>
-					<p class="control">
-							<span class="tag-container">
-								<span class="create">
-									<input type="text" class="tag" placeholder="Nyt Tag">
-									<span class="icon">
-									  <i class="fa fa-plus"></i>
-									</span>
-								</span>
-								<br>
-								<div class="tag" v-for="tag in product.tags">
-									<p>{{tag.name}}</p>
-									<span class="icon">
-									  <i class="fa fa-times"></i>
-									</span>
-								</div>
+					<span class="tag-container">
+						<span class="create">
+							<input type="text" class="tag" placeholder="Nyt Tag">
+							<span class="icon">
+							  <i class="fa fa-plus"></i>
 							</span>
-					</p>
+						</span>
+						<br>
+						<div class="tag" v-for="tag in product.tags">
+							<p>{{tag.name}}</p>
+							<span class="icon">
+							  <i class="fa fa-times"></i>
+							</span>
+						</div>
+					</span>
 					<label class="label">Forslag:</label>
 					<div class="tag-container">
 						<div class="tag">

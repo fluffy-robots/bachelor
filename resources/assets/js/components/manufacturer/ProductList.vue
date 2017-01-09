@@ -189,6 +189,7 @@
                 }
             },
             back(){
+            	this.refreshPage();
             	this.showEditForm = false;
             	this.showProductList = true;
             },
@@ -196,50 +197,59 @@
                 return !! this.expanded_products.find((expanded_product) => expanded_product.id == product.id);
             },
             newProduct(){
-            	this.selectedProduct = { name: 'Nyt Produkt', ean: ''};
+            	this.selectedProduct = { id: 0, name: 'Nyt Produkt', ean: ''};
             	this.showEditForm = true;
             	this.showProductList = false;
             },
             saveProduct(){
-
+            	if(this.selectedProduct.id == 0)
+            	{
+	            	this.$http.post('/manufacturer/products', this.selectedProduct).then( (response) => {
+	            		Toastr.success('Produktet er Oprettet');
+	            		this.back();
+	            	}, (response) => {
+	            		Toastr.error('Produktet er IKKE Oprettet');
+	            		this.back();
+	            	});
+            	}else{
+	            	this.$http.patch('/manufacturer/products/'+this.selectedProduct.id, this.selectedProduct).then( (response) => {
+	            		Toastr.success('Produktet er Gemt');
+	            		this.back();
+	            	}, (response) => {
+	            		Toastr.error('Produktet er IKKE Gemt');
+	            		this.back();
+	            	});
+            	}
+            },
+            ajaxCallPage(url){
+            	this.$http.get(url).then((response) => {
+            		// success
+            		this.nextUrl = response.body.next_page_url;
+            		this.prevUrl = response.body.prev_page_url;
+            		this.products = response.body.data;
+            		this.total_products = response.body.total;
+            		this.current_page = response.body.current_page;
+            		this.last_page = response.body.last_page;
+            		this.from = response.body.from;
+            		this.to = response.body.to;
+            	},(response) => {
+            		// error
+            		console.log(response);
+            	});
+            },
+            refreshPage(){
+        		this.ajaxCallPage('/api/v1/products?page='+this.current_page);
             },
             nextPage(){
             	if(this.nextUrl)
             	{
-	            	this.$http.get(this.nextUrl).then((response) => {
-	            		// success
-	            		this.nextUrl = response.body.next_page_url;
-	            		this.prevUrl = response.body.prev_page_url;
-	            		this.products = response.body.data;
-	            		this.total_products = response.body.total;
-	            		this.current_page = response.body.current_page;
-	            		this.last_page = response.body.last_page;
-	            		this.from = response.body.from;
-	            		this.to = response.body.to;
-	            		// console.log(response);
-	            	},(response) => {
-	            		// error
-	            		console.log(response);
-	            	});
+	            	this.ajaxCallPage(this.nextUrl);
             	}
             },
             prevPage(){
             	if(this.prevUrl)
             	{
-	            	this.$http.get(this.prevUrl).then((response) => {
-	            		// success
-	            		this.nextUrl = response.body.next_page_url;
-	            		this.prevUrl = response.body.prev_page_url;
-	            		this.products = response.body.data;
-	            		this.total_products = response.body.total;
-	            		this.current_page = response.body.current_page;
-	            		this.last_page = response.body.last_page;
-	            		this.from = response.body.from;
-	            		this.to = response.body.to;
-	            	},(response) => {
-	            		// error
-	            		console.log(response);
-	            	});
+	            	this.ajaxCallPage(this.prevUrl);
             	}
             }
     	}

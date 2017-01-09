@@ -19,7 +19,7 @@ class ProductSeed extends Seeder
 
     	foreach ($users as $user) 
     	{
-	        $products = factory(Product::class, 3)->create([
+	        $products = factory(Product::class, 150)->create([
 		    	'user_id' => $user->id
         	]);
 

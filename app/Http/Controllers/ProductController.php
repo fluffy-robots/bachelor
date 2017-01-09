@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Auth::user()->products()->paginate(5);
+        $products = Auth::user()->products()->paginate(15);
 
         foreach($products->all() as $product)
         {
@@ -48,7 +49,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'max:255',
+            'ean' => 'integer',
+        ]);
+
+        $product = Product::create([
+            'user_id' => $request->user()->id,
+            'name' => $request->name,
+            'ean' => $request->ean,
+            'description' => $request->description,
+            'image' => $request->image
+        ]);
+        $product->save();
+
+        return $product;
     }
 
     /**

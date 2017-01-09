@@ -13,7 +13,7 @@ class ManufacturerController extends Controller
 
         // $products = Auth::user()->products;
         // $products->load('tags');
-        $products = Auth::user()->products()->paginate(5);
+        $products = Auth::user()->products()->paginate(15);
 
         foreach($products->all() as $product)
         {

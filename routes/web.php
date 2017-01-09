@@ -21,6 +21,10 @@ Route::group(['middleware' => ['manufacturer','auth'], 'prefix' => 'manufacturer
 	Route::get('media', 'ManufacturerController@media');
 	Route::get('files', 'ManufacturerController@files');
 	Route::get('shopkeeper', 'ManufacturerController@shopkeeper');
+
+	Route::post('products', 'ProductController@store');
+	Route::patch('products/{product}', 'ProductController@update');
+	Route::delete('products/{product}', 'ProductController@destroy');
 });
 
 Route::group(['middleware' => ['shopkeeper','auth'], 'prefix' => 'shopkeeper'], function(){
