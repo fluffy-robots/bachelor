@@ -52,6 +52,11 @@ class FileController extends Controller
         $file->save();
     }
 
+    public function uploadFile(Request $request)
+    {
+        
+    }
+
     public function show($id)
     {
         //

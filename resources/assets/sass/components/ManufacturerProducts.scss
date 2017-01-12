@@ -18,14 +18,12 @@
 
 .manufacturer-products--list{
 	display: flex;
-}
-
-.manufacturer-products--list {
 	border-bottom: 1px solid $light-grey;
 	background: #fff;
 	padding: 5px;
-	line-height: 70px;
+	line-height: 55px;
 	font-family: 'Open Sans', sans-serif;
+	cursor: pointer;
 
 	img {
 		width: 60px;
@@ -130,4 +128,13 @@
 	button{
 		margin-bottom: 15px;
 	}
+}
+
+
+.manufacturer-products--list.is-active, .manufacturer-product--expanded.is-active {
+    border-left: 15px solid $primary;
+    padding-left: 5px;
+}
+.manufacturer-products--list, .manufacturer-product--expanded {
+    padding-left: 20px;
 }

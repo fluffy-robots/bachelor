@@ -71,96 +71,104 @@
             </div>
         </nav>
 
-        <div class="columns">
-        	<h2>Mapper</h2>
-        </div>
-        <div class="columns media--page-padding">
-            <div 
-                class="column is-2 is-gapless media--hover animated zoomInRight"
-                v-for="folder in folders"
-                @click="select(folder)"
-                @dblclick="openFolder(folder)"
-                @contextmenu.prevent="activateContextMenu(folder)"
-            >
-                <div 
-                    class="media--map-box"
-                    :class="{ 'media--active' : isSelected(folder) }"
-                >
-                    <span class="icon is-medium">
-                      <i class="fa fa-folder"></i>
-                    </span>
-                    <h5>{{folder.name}}</h5>
+        <div class="media-list">
+            <div class="media-list--header">
+                <p>Navn</p>
+                <p>Type</p>
+                <p>Updated_at</p>
+            </div>
+            <div class="media-list--container">
+                <div class="media-list--folder">
+                    <p>Navn</p>
+                    <p>Updated_at</p>
                 </div>
+                <div class="media-list--file"></div>
             </div>
         </div>
 
+        <div class="media-grid">
+            <h2>Mapper</h2>
+            <div 
+                class="media-folder"
+                v-for="folder in folders"
+                @click="select(folder)"
+                @dblclick="openFolder(folder)"
+                :class="{ 'media--active' : isSelected(folder) }"
+                @contextmenu.prevent="activateContextMenu(folder)"
+            >
+                <div class="media-content">
+                    <span class="icon is-medium">
+                      <i class="fa fa-folder"></i>
+                    </span>
+                    <div class="media-title">
+                        {{folder.name}}
+                    </div>
+                </div>
+            </div>
 
-         <div class="columns">
-        	<h2>Filer</h2>
-        </div>
-        <div class="columns media--page-padding">
-        	<div 
-                class="column is-2 media--text-align media--hover animated zoomInRight"
+            <h2>Filer</h2>
+            <div 
+                class="media-file"
                 v-for="file in files"
                 :class="{ 'media--active' : isSelected(file) }"
                 @click="select(file)"
                 @contextmenu.prevent="activateContextMenu(file)"
             >
-        		<div class="media--file-image">
-        			<img :src="file.image" alt="File Image">
-        		</div>
-        		<div class="media--file-image-text">
-        			<h5>
-                    <span class="icon">
-                      <i class="fa media--file-icon" :class="file.icon"></i>
+                <div class="media-file--image">
+                    <img :src="file.image" alt="File Image">
+                </div>
+                <div class="media-content">
+                    <span class="icon is-medium">
+                      <i class="fa" :class="file.icon"></i>
                     </span>
+                    <div class="media-title">
                         {{file.name}}
-                    </h5>
-        		</div>
-        	</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-    <transition name="fade">
-        <div class="rightclickmenu" v-show="showContextMenu">
-            <ul>
-        		<li @click="contextMenuClicked('preview')">
-                    <span class="icon">
-					  <i class="fa fa-eye"></i>
-					</span>
-					Preview
-				</li>
-                <li @click="contextMenuClicked('rename')">
-                    <span class="icon">
-                      <i class="fa fa-pencil"></i>
-                    </span>
-                    Omdøb
-                </li>
-                <li @click="contextMenuClicked('move')">
-                    <span class="icon">
-                      <i class="fa fa-arrows"></i>
-                    </span>
-                    Flyt
-                </li>
-                <li @click="contextMenuClicked('delete')">
-                    <span class="icon">
-                      <i class="fa fa-trash"></i>
-                    </span>
-                    Slet
-                <li @click="contextMenuClicked('copy')">
-                    <span class="icon">
-                      <i class="fa fa-files-o"></i>
-                    </span>
-                    Duplikér
-                </li>
-                <li @click="contextMenuClicked('download')">
-                    <span class="icon">
-                      <i class="fa fa-download"></i>
-                    </span>
-                    Download
-                </li>
-            </ul>
-        </div>
-    </transition>   
+        <transition name="fade">
+            <div class="rightclickmenu" v-show="showContextMenu">
+                <ul>
+            		<li @click="contextMenuClicked('preview')">
+                        <span class="icon">
+    					  <i class="fa fa-eye"></i>
+    					</span>
+    					Preview
+    				</li>
+                    <li @click="contextMenuClicked('rename')">
+                        <span class="icon">
+                          <i class="fa fa-pencil"></i>
+                        </span>
+                        Omdøb
+                    </li>
+                    <li @click="contextMenuClicked('move')">
+                        <span class="icon">
+                          <i class="fa fa-arrows"></i>
+                        </span>
+                        Flyt
+                    </li>
+                    <li @click="contextMenuClicked('delete')">
+                        <span class="icon">
+                          <i class="fa fa-trash"></i>
+                        </span>
+                        Slet
+                    <li @click="contextMenuClicked('copy')">
+                        <span class="icon">
+                          <i class="fa fa-files-o"></i>
+                        </span>
+                        Duplikér
+                    </li>
+                    <li @click="contextMenuClicked('download')">
+                        <span class="icon">
+                          <i class="fa fa-download"></i>
+                        </span>
+                        Download
+                    </li>
+                </ul>
+            </div>
+        </transition>   
 
     </div>
 </template>

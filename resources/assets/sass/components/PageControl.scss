@@ -17,4 +17,8 @@
         margin-left: 0;
         margin-right: 0;
     }
+
+    .button.is-primary.is-inverted:hover{
+        color: $primary !important;
+    }
 }

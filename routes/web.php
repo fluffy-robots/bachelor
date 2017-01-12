@@ -25,6 +25,8 @@ Route::group(['middleware' => ['manufacturer','auth'], 'prefix' => 'manufacturer
 	Route::post('products', 'ProductController@store');
 	Route::patch('products/{product}', 'ProductController@update');
 	Route::delete('products/{product}', 'ProductController@destroy');
+
+	Route::post('files', 'FileController@uploadFile');
 });
 
 Route::group(['middleware' => ['shopkeeper','auth'], 'prefix' => 'shopkeeper'], function(){

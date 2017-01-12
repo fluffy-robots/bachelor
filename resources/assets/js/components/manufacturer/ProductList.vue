@@ -25,9 +25,18 @@
 	        	</button>
         	</div>
 			<div class="nav-center">
-				<h3 class="manufacturer-product--name">{{selectedProduct.name}}</h3>
+				<h3 class="manufacturer-product--name">{{product.name}}</h3>
 			</div>
 			<div class="nav-right">
+				<a 
+					class="button is-primary is-inverted is-icon"
+					v-show="this.selected_products.length > 0"
+				>
+					<span class="icon">
+						<i class="fa fa-trash"></i>
+					</span>
+					<span>Slet</span>
+				</a>
 				<a class="button is-primary is-inverted is-icon">
 					<span class="icon">
 						<i class="fa fa-file"></i>
@@ -35,13 +44,19 @@
 					<span>Eksporter</span>
 				</a>
 				<div class="separator"></div>
-				<a class="button is-primary is-inverted is-icon">
+				<a 
+					class="button is-primary is-inverted is-icon"
+					@click="minimizeAll"
+				>
 					<span class="icon">
 						<i class="fa fa-list"></i>
 					</span>
 					<span>Saml Alle</span>
 				</a>
-				<a class="button is-primary is-inverted is-icon">
+				<a 
+					class="button is-primary is-inverted is-icon"
+					@click="expandAll"
+				>
 					<span class="icon">
 						<i class="fa fa-th-list"></i>
 					</span>
@@ -49,7 +64,7 @@
 				</a>
 			</div>
         </nav>
-        <manufacturer-product-edit :product="selectedProduct" v-show="showEditForm"></manufacturer-product-edit>
+        <manufacturer-product-edit :product="product" v-show="showEditForm"></manufacturer-product-edit>
 		<div class="manufacturer-productlist--container" v-show="showProductList">
 			<div class="manufacturer-products--header">
 				<a>Name</a>
@@ -62,7 +77,8 @@
 				<div 
 					class="manufacturer-products--list animated fadeIn" 
 					v-show="!isExpanded(product)"
-					@click="expand(product)"
+					@click="select(product)"
+					:class="{ 'is-active' : isSelected(product) }"
 				>
 					<img class="list-image" :src="product.image" alt="Product Image" >
 					<p class="product--title">{{ product.name }}</p>
@@ -73,7 +89,7 @@
 					<p class="product--updatet">{{ product.updated_at }}</p>
 					<button 
 						class="button is-primary produkt--knppen"
-						@click="select(product)"
+						@click="edit(product)"
 					>
 						Rediger produkt
 					</button>
@@ -84,7 +100,8 @@
 				<div 
 					class="manufacturer-product--expanded animated fadeIn" 
 					v-show="isExpanded(product)"
-					@click="expand(product)"
+					@click="select(product)"
+					:class="{ 'is-active' : isSelected(product) }"
 				>
 					<div class="columns">
 						<div class="column is-2">
@@ -118,9 +135,9 @@
 						    			>
 							    			Rediger Produkt
 						    			</button>
-								    	<button class="button is-info">Adgangskontrol</button>   
+								    	<button class="button is-info">Adgangskontrol</button>
 									</div>
-								  </div>		
+								</div>		
 							</div>
 						</div>
 					</div>
@@ -160,9 +177,9 @@
     	},
     	data(){
     		return {
-    			products: this.data.data,
     			expanded_products: [],
-    			selectedProduct: { name: '' },
+    			selected_products: [],
+    			product: { name: '' },
     			showEditForm: false,
     			showProductList: true,
     			nextUrl: '/api/v1/products?page=2',
@@ -174,20 +191,34 @@
     			to: this.data.to,
        		};
     	},
+    	computed: {
+    		products(){
+    			return this.data.data;
+    		}
+    	},
     	methods: {
     		select(product){
-    			this.selectedProduct = product;
-    			this.showEditForm = true;
-    			this.showProductList = false;
+    			if(this.isSelected(product))
+                {
+                    this.selected_products = this.selected_products.filter((item) => item.id != product.id)
+                }else{
+                    this.selected_products.push(product);
+                }
     		},
     		expand(product){
                 if(this.isExpanded(product))
                 {
                     this.expanded_products = this.expanded_products.filter((expanded_product) => expanded_product.id != product.id)
                 }else{
+                	this.select(product);
                     this.expanded_products.push(product);
                 }
             },
+    		edit(product){
+    			this.product = product;
+    			this.showEditForm = true;
+    			this.showProductList = false;
+    		},
             back(){
             	this.refreshPage();
             	this.showEditForm = false;
@@ -196,15 +227,24 @@
             isExpanded(product){
                 return !! this.expanded_products.find((expanded_product) => expanded_product.id == product.id);
             },
+            isSelected(product){
+            	return !! this.selected_products.find((item) => item.id == product.id);
+            },
+            expandAll(){
+            	this.expanded_products = this.products;
+            },
+            minimizeAll(){
+            	this.expanded_products = [];
+            },
             newProduct(){
-            	this.selectedProduct = { id: 0, name: 'Nyt Produkt', ean: ''};
+            	this.product = { id: 0, name: 'Nyt Produkt', ean: ''};
             	this.showEditForm = true;
             	this.showProductList = false;
             },
             saveProduct(){
-            	if(this.selectedProduct.id == 0)
+            	if(this.product.id == 0)
             	{
-	            	this.$http.post('/manufacturer/products', this.selectedProduct).then( (response) => {
+	            	this.$http.post('/manufacturer/products', this.product).then( (response) => {
 	            		Toastr.success('Produktet er Oprettet');
 	            		this.back();
 	            	}, (response) => {
@@ -212,7 +252,7 @@
 	            		this.back();
 	            	});
             	}else{
-	            	this.$http.patch('/manufacturer/products/'+this.selectedProduct.id, this.selectedProduct).then( (response) => {
+	            	this.$http.patch('/manufacturer/products/'+this.product.id, this.product).then( (response) => {
 	            		Toastr.success('Produktet er Gemt');
 	            		this.back();
 	            	}, (response) => {
@@ -221,7 +261,7 @@
 	            	});
             	}
             },
-            ajaxCallPage(url){
+            requestPage(url){
             	this.$http.get(url).then((response) => {
             		// success
             		this.nextUrl = response.body.next_page_url;
@@ -238,18 +278,18 @@
             	});
             },
             refreshPage(){
-        		this.ajaxCallPage('/api/v1/products?page='+this.current_page);
+        		this.requestPage('/api/v1/products?page='+this.current_page);
             },
             nextPage(){
             	if(this.nextUrl)
             	{
-	            	this.ajaxCallPage(this.nextUrl);
+	            	this.requestPage(this.nextUrl);
             	}
             },
             prevPage(){
             	if(this.prevUrl)
             	{
-	            	this.ajaxCallPage(this.prevUrl);
+	            	this.requestPage(this.prevUrl);
             	}
             }
     	}
