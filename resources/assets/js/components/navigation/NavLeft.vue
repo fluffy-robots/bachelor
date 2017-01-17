@@ -33,12 +33,12 @@
         data() {
             return {
                 shopkeeperMenuItems: [
-                    { name: 'Dashboard', route: '/home', icon: 'fa-tachometer'},
+                    // { name: 'Dashboard', route: '/home', icon: 'fa-tachometer'},
                     { name: 'Produkt Oversigt', route: '/shopkeeper/products', icon: 'fa-shopping-cart'},
                     { name: 'Producenter Oversigt', route: '/shopkeeper/manufacturer', icon: 'fa-users'},
                 ],
                 manufacturerMenuItems: [
-                    { name: 'Dashboard', route: '/home', icon: 'fa-tachometer'},
+                    // { name: 'Dashboard', route: '/home', icon: 'fa-tachometer'},
                     { name: 'Produkt Oversigt', route: '/manufacturer/products', icon: 'fa-shopping-cart'},
                     { name: 'Medie Bank', route: '/manufacturer/media', icon: 'fa-archive'},
                     { name: 'Forhandler Oversigt', route: '/manufacturer/shopkeeper', icon: 'fa-users'}

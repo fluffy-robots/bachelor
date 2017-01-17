@@ -39,6 +39,7 @@ Vue.http.interceptors.push((request, next) => {
 window.Toastr = require('toastr');
 
 window.Dropzone = require('dropzone');
+Dropzone.autoDiscover = false;
 
 
 /**

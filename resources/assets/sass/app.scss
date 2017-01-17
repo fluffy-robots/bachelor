@@ -49,6 +49,7 @@ body{
     height: calc( 100vh - 60px);    
     padding-top: 60px;
     background: #f5f5f5;
+    width: calc( 84vw - 13px);
 }
 .logo strong {
     color: $primary;
@@ -120,6 +121,7 @@ h5 {
 @import "./components/NavLeft";
 @import "./components/ManufacturerProducts";
 @import "./components/ManufacturerProductEdit";
+@import "./components/ManufacturerProductImages";
 @import "./components/mediabank";
 @import "./components/RightClickMenu";
 @import "./components/shopkeepers";

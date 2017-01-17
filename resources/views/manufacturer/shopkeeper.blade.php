@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<shopkeepers></shopkeepers>
+<shopkeepers :data="{{ $shopkeepers }}"></shopkeepers>
 @endsection

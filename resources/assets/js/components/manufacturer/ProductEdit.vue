@@ -52,15 +52,15 @@
 	    			<label class="label">Tags</label>
 					<span class="tag-container">
 						<span class="create">
-							<input type="text" class="tag" placeholder="Nyt Tag">
-							<span class="icon">
+							<input type="text" class="tag" v-model="tagName" placeholder="Nyt Tag">
+							<span class="icon" @click="addTag" :keydown.enter="addTag">
 							  <i class="fa fa-plus"></i>
 							</span>
 						</span>
 						<br>
 						<div class="tag" v-for="tag in product.tags">
 							<p>{{tag.name}}</p>
-							<span class="icon">
+							<span class="icon" @click="deleteTag(tag)">
 							  <i class="fa fa-times"></i>
 							</span>
 						</div>
@@ -100,113 +100,7 @@
 	    	</div>
 	    </div>
 	    <div class="manufacturer-product-edit--images animated fadeIn" v-show="showImages">
-	    	<div class="columns">
-	    		<div class="column is-8 has-border-right">
-	    			<label class="label">Mapper</label>
-
-	    			<div class="columns media--page-padding">
-			            <div class="column is-2 is-gapless media--hover animated fadeIn">
-			                <div class="media--map-box">
-			                    <span class="icon is-medium">
-			                      <i class="fa fa-folder"></i>
-			                    </span>
-			                    <h5>test</h5>
-			                </div>
-			            </div>
-			            <div class="column is-2 is-gapless media--hover animated fadeIn">
-			                <div class="media--map-box">
-			                    <span class="icon is-medium">
-			                      <i class="fa fa-folder"></i>
-			                    </span>
-			                    <h5>test</h5>
-			                </div>
-			            </div>
-			            <div class="column is-2 is-gapless media--hover animated fadeIn">
-			                <div class="media--map-box">
-			                    <span class="icon is-medium">
-			                      <i class="fa fa-folder"></i>
-			                    </span>
-			                    <h5>test</h5>
-			                </div>
-			            </div>
-			            <div class="column is-2 is-gapless media--hover animated fadeIn">
-			                <div class="media--map-box">
-			                    <span class="icon is-medium">
-			                      <i class="fa fa-folder"></i>
-			                    </span>
-			                    <h5>test</h5>
-			                </div>
-			            </div>
-			            <div class="column is-2 is-gapless media--hover animated fadeIn">
-			                <div class="media--map-box">
-			                    <span class="icon is-medium">
-			                      <i class="fa fa-folder"></i>
-			                    </span>
-			                    <h5>test</h5>
-			                </div>
-			            </div>
-			        </div>
-	    			<label class="label">Filer</label>
-	    			<div class="columns media--page-padding">
-			        	<div class="column is-2 media--text-align media--hover animated fadeIn media--active">
-			        		<div class="media--file-image">
-			        			<img src="/images/0/test.png" alt="File Image">
-			        		</div>
-			        		<div class="media--file-image-text">
-			        			<h5>
-			                    <span class="icon">
-			                      <i class="fa media--file-icon fa-file-o"></i>
-			                    </span>
-			                        Test Billede #1
-			                    </h5>
-			        		</div>
-			        	</div>
-			        	<div class="column is-2 media--text-align media--hover animated fadeIn">
-			        		<div class="media--file-image">
-			        			<img src="/images/0/test.png" alt="File Image">
-			        		</div>
-			        		<div class="media--file-image-text">
-			        			<h5>
-			                    <span class="icon">
-			                      <i class="fa media--file-icon fa-file-o"></i>
-			                    </span>
-			                        Test Billede #2
-			                    </h5>
-			        		</div>
-			        	</div>
-			        	<div class="column is-2 media--text-align media--hover animated fadeIn">
-			        		<div class="media--file-image">
-			        			<img src="/images/0/test.png" alt="File Image">
-			        		</div>
-			        		<div class="media--file-image-text">
-			        			<h5>
-			                    <span class="icon">
-			                      <i class="fa media--file-icon fa-file-o"></i>
-			                    </span>
-			                        Test Billede #3
-			                    </h5>
-			        		</div>
-			        	</div>
-			        </div>
-	    		</div>
-	    		<div class="column is-4">
-	    			<label class="label">Valgte Billeder:</label>
-	    			<ul>
-	    				<li style="width: 100px; height: 150px;">
-	    					<div class="media--text-align media--hover animated fadeIn">
-				        		<div class="selected-image" style="border: 1px solid lightgrey">
-				        			<img 
-					        			style="width: 100px; max-height: 200px;"
-					        			src="/images/0/test.png" 
-					        			alt="File Image"
-				        			>
-			                        <p>Test Billede #1</p>
-				        		</div>
-				        	</div>
-    					</li>
-	    			</ul>
-	    		</div>
-	    	</div>
+			<manufacturer-product-images :data="product"></manufacturer-product-images>
 	    	<div>
 	    		<hr>
 	    		<button class="button is-primary is-medium is-pulled-right" @click="activateTab('variants')">Næste</button>
@@ -378,57 +272,180 @@
 	    </div>
 	    <div class="manufacturer-product-edit--technical animated fadeIn" v-show="showTechnical">
 			<div class="columns">
-				<div class="column is-4 has-border-right">
+				<div class="column is-3 has-border-right">
 					<div class="field-option--select">
 						<label class="label">Tilføj Felt</label>
 						<div class="control">
 							<span class="select is-medium">
-								<select name="field">
-									<option value="1">Mål</option>
+								<select name="field" v-model="selectedField">
+									<option :value="field.id" v-for="field in fields">{{ field.name}}</option>
 								</select>
 							</span>
 						</div>
 					</div>
-					<div class="field-options--container">
-						<div class="field-option">
+					<div class="field-options--container" v-if="selectedField == 1">
+						<div class="field-option" v-for="option in fields[0].options">
 							<div class="control">
 								<label class="checkbox">
-									<input type="checkbox" name="question">
-									Højde
-								</label>
-							</div>
-						</div>
-						<div class="field-option">
-							<div class="control">
-								<label class="checkbox">
-									<input type="checkbox" name="question">
-									Bredde
-								</label>
-							</div>
-						</div>
-						<div class="field-option">
-							<div class="control">
-								<label class="checkbox">
-									<input type="checkbox" name="question">
-									Længde
-								</label>
-							</div>
-						</div>
-						<div class="field-option">
-							<div class="control">
-								<label class="checkbox">
-									<input type="checkbox" name="question">
-									Dybde
+									<input type="checkbox" name="dimension[]">
+									{{option.name}}
 								</label>
 							</div>
 						</div>
 					</div>
 					<div class="field-option--control">
-						<button class="button is-primary is-medium is-pulled-right">Gem og Tilføj</button>
+						<button class="button is-primary is-medium is-pulled-right">Tilføj</button>
 					</div>
 				</div>
 				<div class="column">
-					
+					<div class="columns">
+						<div class="column">
+							<div class="control is-horizontal">
+								<div class="control-label">
+									<label class="label"><small style="float: left;">Tekst Felt</small> Farve</label>
+								</div>
+								<div class="control is-grouped">
+									<p class="control is-expanded">
+									    <input class="input" type="text" placeholder="Farve">
+									</p>
+									<p class="control is-expanded">
+									    <input class="input" type="email" placeholder="Grå 216, Kan fås i flere farver">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns">
+						<div class="column">
+							<div class="control is-horizontal">
+								<div class="control-label">
+									<label class="label"><small style="float: left;">Tekst Felt</small> Type</label>
+								</div>
+								<div class="control is-grouped">
+									<p class="control is-expanded">
+									    <input class="input" type="text" placeholder="Type">
+									</p>
+									<p class="control is-expanded">
+									    <input class="input" type="email" placeholder="Sovesofa">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns">
+						<div class="column">
+							<div class="control is-horizontal">
+								<div class="control-label">
+									<label class="label"><small style="float: left;">Tekst Felt</small> Materiale</label>
+								</div>
+								<div class="control is-grouped">
+									<p class="control is-expanded">
+									    <input class="input" type="text" placeholder="Materiale">
+									</p>
+									<p class="control is-expanded">
+									    <input class="input" type="email" placeholder="Stof, med høj slidstyrke">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns">
+						<div class="column">
+							<div class="control is-horizontal">
+								<div class="control-label">
+									<label class="label"><small style="float: left;">Tekst Felt</small> Fjedring</label>
+								</div>
+								<div class="control is-grouped">
+									<p class="control is-expanded">
+									    <input class="input" type="text" placeholder="Fjedring">
+									</p>
+									<p class="control is-expanded">
+									    <input class="input" type="email" placeholder="Posefjedre">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns">
+						<div class="column">
+							<div class="control is-horizontal">
+								<div class="control-label">
+									<label class="label"><small style="float: left;">Tekst Felt</small> Ben</label>
+								</div>
+								<div class="control is-grouped">
+									<p class="control is-expanded">
+									    <input class="input" type="text" placeholder="Ben">
+									</p>
+									<p class="control is-expanded">
+									    <input class="input" type="email" placeholder="Metal">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns">
+						<div class="column">
+							<div class="control">
+								<div class="control-label">
+									<label style="width: 200px" class="label"><small style="float:left;">Dimensioner</small> Dimensioner</label>
+								</div>
+								<div class="columns" style="padding: 15px; width: 100%;">
+									<div class="column is-1">
+										<div class="content">	
+											<h4 style="line-height:1.5;">Højde</h4>
+											<h4 style="line-height:1.5;">Længde</h4>
+											<h4 style="line-height:1.5;">Bredde</h4>
+										</div>
+									</div>
+									<div class="column ">
+										<p class="control has-addons">
+										    <span class="select">
+										    	<select>
+										        	<option>MM</option>
+										        	<option selected>CM</option>
+										        	<option>M</option>
+										    	</select>
+										    </span>
+										    <input class="input is-expanded" type="text" placeholder="Værdi">
+										</p>
+										<p class="control has-addons">
+										    <span class="select">
+										    	<select>
+										        	<option>MM</option>
+										        	<option selected>CM</option>
+										        	<option>M</option>
+										    	</select>
+										    </span>
+										    <input class="input is-expanded" type="text" placeholder="Værdi">
+										</p>
+										<p class="control has-addons">
+										    <span class="select">
+										    	<select>
+										        	<option>MM</option>
+										        	<option selected>CM</option>
+										        	<option>M</option>
+										    	</select>
+										    </span>
+										    <input class="input is-expanded" type="text" placeholder="Værdi">
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns">
+						<div class="column">
+							<div style="border-bottom: 1px solid lightgrey">Preview:</div>
+							<div class="preview" style="padding: 15px">
+								<div><strong>Farve:</strong> ​Grå 216, kan fås i flere farver</div>
+								<div><strong>Type:</strong> ​Sovesofa</div>
+								<div><strong>Materiale:</strong> Stof, med høj slidstyrke</div>
+								<div>​<strong>Fjedring:</strong> ​Posefjedre</div>
+								<div><strong>Ben:</strong> ​Metal</div>
+								<div><strong>Mål:</strong> ​Længde 200 cm x Bredde 140 cm x Højde 90 cm</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 	    </div>
@@ -449,6 +466,36 @@
     			showImages: false,
     			showVariants: false,
     			showTechnical: false,
+    			
+    			tagName: '',
+    			selectedField: 1,
+    			fields: [
+    				{ 
+    					id: 1,
+						name: 'Dimensioner',
+						options: [
+							{ name: 'Højde' },
+							{ name: 'Længde' },
+							{ name: 'Bredde' },
+							{ name: 'Dybde' }
+						]
+    				},
+    				{
+    					id: 2,
+    					name: 'Tekstfelt',
+    					options: []
+    				},
+    				{
+    					id: 3,
+    					name: 'Farver',
+    					options: []
+    				},
+    				{
+    					id: 4,
+    					name: 'Pris',
+    					options: []
+    				}
+    			]
     		}
     	},
     	computed: {
@@ -481,10 +528,34 @@
 				this.showImages = false;
 				this.showVariants = false;
 				this.showTechnical = false;
+    		},
+    		addTag(){
+    			let vm = this;
+    			if(vm.tagName != '')
+    			{
+	    			this.$http
+	    				.post(
+    						'/manufacturer/tags', 
+    						{   
+    							'product_id' : vm.product.id,
+    							'name' : vm.tagName 
+    						})
+	    				.then( (response) => {
+	    				vm.tagName = '';
+	    				vm.product.tags = response.data;
+	    			})
+    			}
+    		},
+    		deleteTag(tag){
+    			let vm = this;
+    			this.$http
+    				.delete('/manufacturer/tags/'+tag.id)
+    				.then( (response) => {
+    					vm.product.tags = vm.product.tags.filter( (item) => item.id != tag.id );
+    				});
     		}
     	},
         mounted() {
-            
         }
     }
 </script>

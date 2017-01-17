@@ -1,0 +1,40 @@
+.product-images--page-control {
+    position: relative !important;
+    width: 100% !important;
+    top: 0 !important;
+}
+
+.product-images--upload-form{
+	position: absolute !important;
+	top: 45px !important;
+}
+
+.product-images--name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.selected-images--container .selected-image {
+    display: inline-block;
+    width: calc(33% - 15px);
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid lightgrey;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+}
+
+.selected-images--container .selected-image img{
+	height: 100px;
+	width: 100px;
+}
+.selected-images--container .selected-image .icon{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: $primary;
+}

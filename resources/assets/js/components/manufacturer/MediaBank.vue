@@ -5,7 +5,7 @@
                 <button class="button is-medium is-primary" @click="showUploadDropdown = !showUploadDropdown">
                     Ny 
                     <span class="icon" style="padding-left: 10px;">
-                        <i class="fa fa-caret-down"></i>
+                        <i class="fa" :class="{ 'fa-caret-up' : showUploadDropdown, 'fa-caret-down' : !showUploadDropdown }"></i>
                     </span>
                 </button>
                 <transition name="fade">
@@ -13,9 +13,9 @@
                         <input type="text" class="input" placeholder="Ny Mappe" v-model="newFolderName">
                         <button class="button is-primary" @click.prevent="createNewFolder" :disabled="newFolderName.length == 0">Opret Mappe</button>
                         <form 
-                            action="/file-upload"
+                            action="/manufacturer/files"
                             class="dropzone"
-                            id="my-awesome-dropzone"
+                            id="manufacturer-dropzone"
                         ></form>
                     </div>
                 </transition>
@@ -27,38 +27,38 @@
             </div>
             <div class="nav-right">
                 <span class="media-controls separator" v-show="selected_media.length > 0">
-                    <a class="button is-primary is-inverted">
+                    <!-- <a class="button is-primary is-inverted">
                         <span class="icon">
-                            <i class="fa fa-eye"></i>
+                            <i style="color: black;" class="fa fa-eye"></i>
                         </span>
                     </a>
                     <a class="button is-primary is-inverted">
                         <span class="icon">
-                            <i class="fa fa-pencil"></i>
+                            <i style="color: black;" class="fa fa-pencil"></i>
                         </span>
                     </a>
                     <a class="button is-primary is-inverted">
                         <span class="icon">
-                            <i class="fa fa-arrows"></i>
+                            <i style="color: black;" class="fa fa-arrows"></i>
+                        </span>
+                    </a> -->
+                    <a class="button is-primary is-inverted">
+                        <span class="icon" @click="deleteFiles">
+                            <i style="color: black;" class="fa fa-trash"></i>
+                        </span>
+                    </a>
+                    <!-- <a class="button is-primary is-inverted">
+                        <span class="icon">
+                            <i style="color: black;" class="fa fa-files-o"></i>
                         </span>
                     </a>
                     <a class="button is-primary is-inverted">
                         <span class="icon">
-                            <i class="fa fa-trash"></i>
+                            <i style="color: black;" class="fa fa-download"></i>
                         </span>
-                    </a>
-                    <a class="button is-primary is-inverted">
-                        <span class="icon">
-                            <i class="fa fa-files-o"></i>
-                        </span>
-                    </a>
-                    <a class="button is-primary is-inverted">
-                        <span class="icon">
-                            <i class="fa fa-download"></i>
-                        </span>
-                    </a>
+                    </a> -->
                 </span>
-                <a class="button is-primary is-medium is-inverted">
+                <!-- <a class="button is-primary is-medium is-inverted">
                     <span class="icon">
                         <i class="fa fa-list"></i>
                     </span>
@@ -67,24 +67,11 @@
                     <span class="icon">
                         <i class="fa fa-th-large"></i>
                     </span>
-                </a>
+                </a> -->
             </div>
         </nav>
 
-        <div class="media-list">
-            <div class="media-list--header">
-                <p>Navn</p>
-                <p>Type</p>
-                <p>Updated_at</p>
-            </div>
-            <div class="media-list--container">
-                <div class="media-list--folder">
-                    <p>Navn</p>
-                    <p>Updated_at</p>
-                </div>
-                <div class="media-list--file"></div>
-            </div>
-        </div>
+        
 
         <div class="media-grid">
             <h2>Mapper</h2>
@@ -175,21 +162,17 @@
 
 <script>
     export default {
-        props: {
-            data: {
-                type: Array
-            }
-        },
         data() {
             return {
-                media: this.data,
+                media: [],
                 selected_media : [],
                 showContextMenu : false,
                 contextMenuItem : {},
                 showUploadDropdown : false,
                 newFolderName: '',
                 parentId: 0,
-                breadcrumbs: [ { id: 0 , name: 'Medie Banken'} ]
+                breadcrumbs: [ { id: 0 , name: 'Medie Banken'} ],
+                dropzone: null
             }
         },
         methods: {
@@ -213,12 +196,43 @@
             hideContextMenu(){
                 this.showContextMenu = false;
             },
+            deleteFiles(){
+                if(this.selected_media.length > 0)
+                {
+                    this.selected_media.forEach( (media) => {
+                        this.$http.delete('/manufacturer/files/'+media.id).then((response) => {
+                            console.log(response);
+                        });
+                    });
+                    this.refreshMedia(this.parentId);
+                }
+            },
             contextMenuClicked(action){
                 console.log('clicked', action, this.contextMenuItem.name);
+                switch(action){
+                    case 'preview':
+                    break;
+                    case 'rename':
+                    break;
+                    case 'move':
+                    break;
+                    case 'delete':
+                        this.$http.delete('/manufacturer/files/'+this.contextMenuItem.id).then((response) => {
+                            console.log(response);
+                            this.refreshMedia(this.parentId);
+                        });
+                    break;
+                    case 'copy':
+                    break;
+                    case 'download':
+                    break;
+                    default:
+                    console.log('nothing happened, Missing Action');
+                }
             },
             createNewFolder(){
-                this.$http.post('/api/v1/files', { name: this.newFolderName, parent_id: this.parentId, type: 'folder', api_token: Laravel.api_token }).then((response) => {
-                    Toastr.success('Mappen '+this.newFolderName+' Oprettet');
+                this.$http.post('/manufacturer/folders', { name: this.newFolderName, parent_id: this.parentId }).then((response) => {
+                    Toastr.success('Mappen '+this.newFolderName+' blev oprettet');
                     this.showUploadDropdown = false;
                     this.newFolderName = '';
                     this.refreshMedia(this.parentId);
@@ -228,7 +242,6 @@
                 });
             },
             openFolder(folder){
-                this.parentId = folder.id;
                 this.refreshMedia(folder.id);
                 let breadcrumb = {
                     id : folder.id,
@@ -242,19 +255,28 @@
                 this.refreshMedia(breadcrumb.id);
             },
             refreshMedia(parentId = this.parentId){
+                this.parentId = parentId;
                 this.$http.get('/manufacturer/files?parent_id='+parentId).then((response) => {
                     this.selected_media = [];
-                    this.media = (Array.isArray(response.body)) ? response.body : [response.body];
+                    this.media = response.data;
                 });
             }
         },
         computed:{
             folders() {
+                if(this.media.length == 0)
+                {
+                    return [];
+                }
                 return this.media.filter( (file) => file.type == 'folder');
             },
             files() {
+                if(this.media.length == 0)
+                {
+                    return [];
+                }
                 let files = this.media.filter( (file) => file.type != 'folder');
-                files.forEach(function(file){
+                files.forEach((file) => {
                     switch(file.type){
                         case 'pdf':
                             file.image = '/images/icons/pdf.png';
@@ -277,6 +299,23 @@
             }
         },
         mounted() {
+            let vm = this;
+            vm.refreshMedia(0);
+            let manufacturerDropzone = new Dropzone("form#manufacturer-dropzone", { url: "/manufacturer/files" });
+            manufacturerDropzone
+                .on("sending", function(file, xhr, formData) {
+                    formData.append("_token", Laravel.csrfToken);
+                    formData.append('parent_id', vm.parentId);
+                })
+                .on('complete', function (file) {
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)
+                    {
+                        vm.dropzone = this;
+                        this.removeAllFiles();
+                        vm.refreshMedia(vm.parentId);
+                        vm.showUploadDropdown = false;
+                    }
+                });
         }
     }
 </script>

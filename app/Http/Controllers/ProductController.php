@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\File;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Auth::user()->products()->paginate(15);
-
+        $links = array();
         foreach($products->all() as $product)
         {
             $product->load('tags');
@@ -59,10 +60,9 @@ class ProductController extends Controller
             'name' => $request->name,
             'ean' => $request->ean,
             'description' => $request->description,
-            'image' => $request->image
         ]);
         $product->save();
-
+        $product->load(['image', 'files']);
         return $product;
     }
 
@@ -109,5 +109,28 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addFile(Request $request)
+    {
+        $file = File::find($request->file['id']);
+        $product = Product::find($request->product['id']);
+        $product->add_files($file);
+        return $product->files;
+    }
+    public function removeFile(Request $request)
+    {
+        $file = File::find($request->file['id']);
+        $product = Product::find($request->product['id']);
+        $product->files()->detach($file->id);
+        return $product->files;
+    }
+    public function makePrimaryImage(Request $request)
+    {
+        $file = File::find($request->file['id']);
+        $product = Product::find($request->product['id']);
+        $product->set_primary_image($file);
+        $product->save();
+        return $product->image;
     }
 }

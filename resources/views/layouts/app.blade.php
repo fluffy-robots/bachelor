@@ -20,7 +20,7 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
             'apiToken' => Auth::user()->api_token,
-            'User' => Auth::user(),
+            'user' => Auth::user(),
             'route' => Route::getCurrentRoute()->getPath()
         ]); ?>
     </script>

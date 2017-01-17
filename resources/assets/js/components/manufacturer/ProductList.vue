@@ -64,6 +64,9 @@
 				</a>
 			</div>
         </nav>
+
+
+
         <manufacturer-product-edit :product="product" v-show="showEditForm"></manufacturer-product-edit>
 		<div class="manufacturer-productlist--container" v-show="showProductList">
 			<div class="manufacturer-products--header">
@@ -80,7 +83,7 @@
 					@click="select(product)"
 					:class="{ 'is-active' : isSelected(product) }"
 				>
-					<img class="list-image" :src="product.image" alt="Product Image" >
+					<img class="list-image" :src="product.image.path" alt="Product Image" v-if="product.image">
 					<p class="product--title">{{ product.name }}</p>
 					<ul>
 						<li>Tags:</li>
@@ -105,7 +108,7 @@
 				>
 					<div class="columns">
 						<div class="column is-2">
-							<img class="list-image" :src="product.image" alt="Product Image" >
+							<img class="list-image" :src="product.image.path" alt="Product Image" v-if="product.image">
 						</div>
 						<div class="column is-10">
 							<div class="columns product--e-header">
@@ -169,6 +172,7 @@
 </template>
 
 <script>
+	let emptyProduct = { id: 0, name: '', ean: '', image: {  }, files: []};
     export default {
     	props: {
     		data: {
@@ -179,7 +183,7 @@
     		return {
     			expanded_products: [],
     			selected_products: [],
-    			product: { name: '' },
+    			product: (this.data.data.length != 0) ? this.data.data[0] : emptyProduct,
     			showEditForm: false,
     			showProductList: true,
     			nextUrl: '/api/v1/products?page=2',
@@ -195,6 +199,11 @@
     		products(){
     			return this.data.data;
     		}
+    	},
+    	mounted(){
+    		// this.$http.get('/api/v1/products').then((response) => {
+    		// 	console.log(response.data);
+    		// })
     	},
     	methods: {
     		select(product){
@@ -237,9 +246,15 @@
             	this.expanded_products = [];
             },
             newProduct(){
-            	this.product = { id: 0, name: 'Nyt Produkt', ean: ''};
-            	this.showEditForm = true;
-            	this.showProductList = false;
+            	this.$http
+            		.post('/manufacturer/products', emptyProduct)
+            		.then((response) => {
+            			console.log(response.data);
+            			this.product = response.data;
+            			console.log(this.product);
+		            	this.showEditForm = true;
+		            	this.showProductList = false;
+            		});
             },
             saveProduct(){
             	if(this.product.id == 0)
@@ -247,6 +262,7 @@
 	            	this.$http.post('/manufacturer/products', this.product).then( (response) => {
 	            		Toastr.success('Produktet er Oprettet');
 	            		this.back();
+        				this.requestPage('/api/v1/products');
 	            	}, (response) => {
 	            		Toastr.error('Produktet er IKKE Oprettet');
 	            		this.back();
@@ -255,6 +271,7 @@
 	            	this.$http.patch('/manufacturer/products/'+this.product.id, this.product).then( (response) => {
 	            		Toastr.success('Produktet er Gemt');
 	            		this.back();
+        				this.requestPage('/api/v1/products');
 	            	}, (response) => {
 	            		Toastr.error('Produktet er IKKE Gemt');
 	            		this.back();

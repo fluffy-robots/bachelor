@@ -28,7 +28,6 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
     	'user_id' => 1,
         'name' => $faker->bs,
         'description' => $faker->text(500),
-        'image' => '/images/0/test.png',
         'ean' => $faker->ean13,
         'meta' => null,
     ];

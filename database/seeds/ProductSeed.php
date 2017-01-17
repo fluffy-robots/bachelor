@@ -1,6 +1,7 @@
 <?php
 
 use App\Tag;
+use App\File;
 use App\User;
 use App\Product;
 
@@ -17,10 +18,17 @@ class ProductSeed extends Seeder
     {
     	$users = User::all();
 
-    	foreach ($users as $user) 
-    	{
-	        $products = factory(Product::class, 150)->create([
-		    	'user_id' => $user->id
+        foreach ($users as $user) 
+        {
+            $file = factory(File::class, 1)->create([
+                'user_id' => $user->id,
+                'path' => '/images/0/test.png',
+                'type' => 'image'
+            ]);
+
+	        $products = factory(Product::class, 10)->create([
+		    	'user_id' => $user->id,
+                'image_id' => $file->id
         	]);
 
 	        foreach ($products as $product) 

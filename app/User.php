@@ -34,7 +34,6 @@ class User extends Authenticatable
     public function tags(){
         return $this->hasMany(Tag::class);
     }
-
     public function products(){
         return $this->hasMany(Product::class);
     }

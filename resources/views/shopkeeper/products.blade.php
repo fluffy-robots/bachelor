@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<shopkeeper-products :products="{{$products}}"></shopkeeper-products>
+<shopkeeper-products :data="{{$products}}"></shopkeeper-products>
 
 @endsection

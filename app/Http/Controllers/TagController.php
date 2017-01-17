@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Tag;
+use App\Product;
 
 class TagController extends Controller
 {
@@ -34,7 +37,16 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = new Tag([
+            'name' => $request->name,
+            'user_id' => Auth::user()->id
+        ]);
+        $tag->save();
+
+        $product = Product::find($request->product_id);
+        $product->add_tag($tag);
+
+        return $product->tags;
     }
 
     /**
@@ -79,6 +91,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->delete();
     }
 }

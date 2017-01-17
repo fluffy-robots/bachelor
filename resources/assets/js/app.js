@@ -22,6 +22,7 @@ Vue.component('page-control', require('./components/navigation/PageControl.vue')
 // Manufacturer Specific
 Vue.component('manufacturer-products', require('./components/manufacturer/ProductList.vue'));
 Vue.component('manufacturer-product-edit', require('./components/manufacturer/ProductEdit.vue'));
+Vue.component('manufacturer-product-images', require('./components/manufacturer/ProductImages.vue'));
 Vue.component('shopkeepers', require('./components/manufacturer/Shopkeepers.vue'));
 Vue.component('media-bank', require('./components/manufacturer/MediaBank.vue'));
 
@@ -40,13 +41,13 @@ window.EventHub = new Vue();
 
 window.Helper = {
 	isAdmin() {
-		return Laravel.User.role == 'admin';
+		return Laravel.user.role == 'admin';
 	},
 	isShopkeeper() {
-		return Laravel.User.role == 'shopkeeper' || this.isAdmin();
+		return Laravel.user.role == 'shopkeeper' || this.isAdmin();
 	},
 	isManufacturer(){
-		return Laravel.User.role == 'manufacturer' || this.isAdmin();
+		return Laravel.user.role == 'manufacturer' || this.isAdmin();
 	}
 };
 
