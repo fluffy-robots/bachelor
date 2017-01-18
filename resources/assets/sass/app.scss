@@ -16,6 +16,15 @@
   color: black;
 }
 
+.look-here{
+  height: 70px;
+}
+.look-here--container{
+    display: flex;
+    align-items: baseline;
+    padding-left: 20px;
+}
+
 // Variables
 @import "variables";
 

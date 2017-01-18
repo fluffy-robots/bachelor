@@ -1,15 +1,15 @@
 <template>
 <div class="shopkeeper--background">
-    <nav class="nav has-shadow page-control animated fadeIn">
+    <!-- <nav class="nav has-shadow page-control animated fadeIn">
     	<label class="label">Forhandler Oversigt</label>
-    </nav>
-	<article class="message is-warning shopkeeeper--message">
-		<div class="message-header shopkeeper--message-header">
+    </nav> -->
+	<article class="message is-primary shopkeeeper--message">
+		<div class="message-header shopkeeper--message-header" style="border-radius: 0">
 		<span class="icon">
 		<i class="fa fa-info-circle"></i>
-		</span> Ny anodning 
+		</span> Anmodninger
 		</div>
-		<div class="message-body">
+		<div class="message-body" style="border-radius: 0">
 		<table class="table">
 		<tbody>
 		<tr>
@@ -33,9 +33,10 @@
 
 
 
-	<div class="columns" v-for="shopkeeper in shopkeepers">
+	<div class="columns" v-for="shopkeeper, index in shopkeepers">
 		<div class="column is-2">
-			<img class="shopkeeper--logo" src="http://www.bodyman.dk/imgs/bodymandk-logo.png?1fd2123" alt="">
+			<img class="shopkeeper--logo" v-if="index == 0" src="/images/icons/mobelsalgnylogo.png" alt="">
+			<img class="shopkeeper--logo" v-if="index == 1" src="/images/icons/bodymanlogo.png" alt="">
 		</div>
 		<div class="column ">
 			<p>{{ shopkeeper.name }}</p>

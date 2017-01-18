@@ -35,7 +35,9 @@ class ManufacturerController extends Controller
 
     public function shopkeeper()
     {
-        $shopkeepers = User::whereIn('role', ['admin','shopkeeper'])->get();
+        // $shopkeepers = User::whereIn('role', ['admin','shopkeeper'])->get();
+
+        $shopkeepers = User::whereIn('email', ['martin@moebelsalg.dk','thomas@bodyman.dk'])->get();
         return view('manufacturer.shopkeeper', compact('shopkeepers'));
     }
 

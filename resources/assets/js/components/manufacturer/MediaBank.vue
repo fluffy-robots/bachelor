@@ -70,11 +70,40 @@
                 </a> -->
             </div>
         </nav>
-
+        <div class="look-here--container" v-show="folders.length == 0">
+            <img src="/images/icons/arrow.png" class="look-here" alt="">
+            <p>Klik her for at oprette ny mappe eller uploade filer</p>
+        </div>
         
+        <div 
+            class="media-empty" 
+            v-if="media.length == 0"
+            style="padding: 25px; height: calc( 100vh - 120px);"
+        >
+            <!-- <div class="columns">
+                <div class="column is-offset-4 is-4 has-text-left">
+                    <label class="label">Ny Mappe</label>
+                    <p class="control is-grouped">
+                        <input type="text" class="input" placeholder="Mappens Navn" v-model="newFolderName">
+                        <button class="button is-primary" @click.prevent="createNewFolder" :disabled="newFolderName.length == 0">Opret Mappe</button>
+                    </p>
+                </div>
+            </div> -->
+            <form 
+                action="/manufacturer/files"
+                class="dropzone"
+                id="noFilesDropZone"
+            >
+                <div class="dz-message" data-dz-message>
+                    <span>
+                        Denne mappe er tom <br> Smid filer på dette felt, eller klik her, for at uploade
+                    </span>
+                </div>
+            </form>
+        </div>
 
-        <div class="media-grid">
-            <h2>Mapper</h2>
+        <div class="media-grid" v-show="media.length != 0">
+            <h2 v-show="folders.length != 0">Mapper</h2>
             <div 
                 class="media-folder"
                 v-for="folder in folders"
@@ -93,7 +122,7 @@
                 </div>
             </div>
 
-            <h2>Filer</h2>
+            <h2 v-show="files.length != 0">Filer</h2>
             <div 
                 class="media-file"
                 v-for="file in files"
@@ -302,6 +331,8 @@
             let vm = this;
             vm.refreshMedia(0);
             let manufacturerDropzone = new Dropzone("form#manufacturer-dropzone", { url: "/manufacturer/files" });
+            let noFilesDropZone = new Dropzone("form#noFilesDropZone", { url: "/manufacturer/files" });
+
             manufacturerDropzone
                 .on("sending", function(file, xhr, formData) {
                     formData.append("_token", Laravel.csrfToken);
@@ -316,6 +347,21 @@
                         vm.showUploadDropdown = false;
                     }
                 });
+            noFilesDropZone
+                .on("sending", function(file, xhr, formData) {
+                    formData.append("_token", Laravel.csrfToken);
+                    formData.append('parent_id', vm.parentId);
+                })
+                .on('complete', function (file) {
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0)
+                    {
+                        vm.dropzone = this;
+                        this.removeAllFiles();
+                        vm.refreshMedia(vm.parentId);
+                        vm.showUploadDropdown = false;
+                    }
+                });
+            // noFilesDropZone.options.dictDefaultMessage = 'test';
         }
     }
 </script>

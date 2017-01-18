@@ -14,6 +14,18 @@
   color: black;
 }
 
+.look-here {
+  height: 70px;
+}
+
+.look-here--container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: baseline;
+  align-items: baseline;
+  padding-left: 20px;
+}
+
 /*! bulma.io v0.2.3 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -10641,6 +10653,7 @@ input.search-bar:hover, input.search-bar:focus, input.search-bar-border {
 
 .shopkeeper--background {
   background: #fff;
+  margin-top: -60px;
 }
 
 .shopkeeper--logo {

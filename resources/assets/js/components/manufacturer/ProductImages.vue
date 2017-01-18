@@ -228,7 +228,6 @@
                 this.$http
                     .patch('/manufacturer/product/files', { file: media, product: this.data} )
                     .then((response) => {
-                        console.log(response.data);
                         this.product.files = response.data;
                     });
             },

@@ -69,5 +69,22 @@ class DevSeed extends Seeder
             'api_token' => str_random(60)
         ]);
         $shopkeeper->save();
+
+        $moebelsalg = New User([
+            'name' => 'Martin Gade @Møbelsalg',
+            'email' => 'martin@moebelsalg.dk',
+            'password' => Hash::make('password'),
+            'role' => 'shopkeeper',
+            'api_token' => str_random(60)
+        ]);
+        $moebelsalg->save();
+        $bodyman = New User([
+            'name' => 'Thomas Fisker @Bodyman',
+            'email' => 'thomas@bodyman.dk',
+            'password' => Hash::make('password'),
+            'role' => 'shopkeeper',
+            'api_token' => str_random(60)
+        ]);
+        $bodyman->save();
     }
 }
