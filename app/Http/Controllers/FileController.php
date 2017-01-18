@@ -53,7 +53,7 @@ class FileController extends Controller
         $file = new File([
             'name' => $name,
             'type' => $type,
-            'path' => '/'.$path,
+            'path' => '/storage/'.$path,
             'parent_id' => $parent_id,
             'user_id' => $user->id
         ]);
