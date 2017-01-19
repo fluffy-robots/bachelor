@@ -10,7 +10,7 @@ class ManufacturerController extends Controller
 {
     public function products()
     {
-        $products = Auth::user()->products()->paginate(15);
+        $products = Auth::user()->products()->with('tags','image','files')->paginate(15);
 
         $links = array();
         foreach($products->all() as $product)

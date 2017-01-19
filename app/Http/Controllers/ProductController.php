@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Auth::user()->products()->paginate(15);
+        $products = Auth::user()->products()->with('tags','image','files')->paginate(15);
         $links = array();
         foreach($products->all() as $product)
         {
@@ -50,6 +50,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'max:255',
             'ean' => 'integer',
@@ -97,7 +98,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->ean = $request->ean;
+        $product->description = $request->description;
+        $product->save();
+        $product->load(['image', 'files']);
+        return $product;
     }
 
     /**

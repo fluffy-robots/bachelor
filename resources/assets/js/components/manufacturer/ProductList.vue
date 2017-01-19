@@ -181,6 +181,7 @@
     	},
     	data(){
     		return {
+    			product_list: this.data.data,
     			expanded_products: [],
     			selected_products: [],
     			product: (this.data.data.length != 0) ? this.data.data[0] : emptyProduct,
@@ -197,7 +198,7 @@
     	},
     	computed: {
     		products(){
-    			return this.data.data;
+    			return this.product_list;
     		}
     	},
     	mounted(){
@@ -269,6 +270,7 @@
 	            	});
             	}else{
 	            	this.$http.patch('/manufacturer/products/'+this.product.id, this.product).then( (response) => {
+	            		console.log(this.product.id);
 	            		Toastr.success('Produktet er Gemt');
 	            		this.back();
         				this.requestPage('/api/v1/products');
@@ -283,7 +285,7 @@
             		// success
             		this.nextUrl = response.body.next_page_url;
             		this.prevUrl = response.body.prev_page_url;
-            		this.products = response.body.data;
+            		this.product_list = response.body.data;
             		this.total_products = response.body.total;
             		this.current_page = response.body.current_page;
             		this.last_page = response.body.last_page;

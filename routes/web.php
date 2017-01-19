@@ -35,7 +35,6 @@ Route::group(['middleware' => ['manufacturer','auth'], 'prefix' => 'manufacturer
 	Route::post('files', 'FileController@uploadFile');
 	Route::post('folders', 'FileController@createFolder');
 	Route::delete('files/{file}', 'FileController@destroy');
-
 });
 
 Route::group(['middleware' => ['shopkeeper','auth'], 'prefix' => 'shopkeeper'], function(){
