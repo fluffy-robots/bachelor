@@ -79,16 +79,8 @@
             class="media-empty" 
             v-if="media.length == 0"
             style="padding: 25px; height: calc( 100vh - 120px);"
-        >
-            <!-- <div class="columns">
-                <div class="column is-offset-4 is-4 has-text-left">
-                    <label class="label">Ny Mappe</label>
-                    <p class="control is-grouped">
-                        <input type="text" class="input" placeholder="Mappens Navn" v-model="newFolderName">
-                        <button class="button is-primary" @click.prevent="createNewFolder" :disabled="newFolderName.length == 0">Opret Mappe</button>
-                    </p>
-                </div>
-            </div> -->
+         >
+        
             <form 
                 action="/manufacturer/files"
                 class="dropzone"
